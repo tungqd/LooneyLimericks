@@ -40,5 +40,6 @@ body {
 
 #topRecent
 {
+    width:24%;
     float:right;
 }
