@@ -30,7 +30,7 @@ class BaseView
 		</div>
 	</div>
 	
-	<div id="link">
+	<div id="link-rate">
 		<a>Choose Random Poem</a>
 		
 		
