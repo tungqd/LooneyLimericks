@@ -1,5 +1,5 @@
 <?php
-class PoemView 
+class PoemView extends BaseView
 {
 ?>
 <h1>Looney Limericks</h1>
