@@ -27,10 +27,19 @@ class PoemView extends BaseView
 		</div>
 	</div>
 	
-	<div id="link">
-		<a>Choose Random Poem</a>
+	<div id="link-rate">
+		<div id="link">
+			<a>Choose Random Poem</a>
 		
+			<a>Upload a poem</a>
+		</div>
 		
-		<a>Upload a poem</a>
+		<div id="rate">
+			<img id="1" src="nostar.png" onmouseover="glow(this.id)" onmouseout="hide(this.id)" />
+			<img id="2" src="nostar.png" onmouseover="glow(this.id)" onmouseout="hide(this.id)" />
+			<img id="3" src="nostar.png" onmouseover="glow(this.id)" onmouseout="hide(this.id)" />
+			<img id="4" src="nostar.png" onmouseover="glow(this.id)" onmouseout="hide(this.id)" />
+			<img id="5" src="nostar.png" onmouseover="glow(this.id)" onmouseout="hide(this.id)" />
+		</div>
 	</div>
 </div>
