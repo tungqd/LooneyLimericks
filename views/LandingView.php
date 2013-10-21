@@ -2,17 +2,17 @@
 require_once("./views/BaseView.php");
 class LandingView extends BaseView
 {
-	
+	function __construct()
+	{
+		$controller = new main();
+	}
 	
 	function displayPoem()
 	{
-?>
-	
-<?php
+		echo "displayPoem()";
 	}
 }
 ?>
-
 
 <h1>Looney Limericks</h1>
 <div id="wrapper" class="landingPage">
@@ -22,6 +22,12 @@ class LandingView extends BaseView
 				<table>
 					<tr>
 						<th class="PoemTitle">Poem Title</th>
+						<form action="index.php" method="GET">
+							<input type="hidden" name="c" value="main">
+							<input type="hidden" name="view" value="poemview">
+							<input type="hidden" name="ac" value="main">
+    						<input type="text" value="title">
+						</form>
 					</tr>
 					<tr>
 						<td class="PoemContent">Poem Content</td>
@@ -142,3 +148,11 @@ class LandingView extends BaseView
 
 </div> <!-- close div id="wrapper" -->
 	
+	
+		
+<?php
+	$obj = new LandingView(); 
+	$obj->displayPoem();
+	$obj->displayTwoTitleColumn();
+	$obj->displayLinkRating();
+?>

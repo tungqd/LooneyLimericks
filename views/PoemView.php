@@ -6,13 +6,10 @@ class PoemView extends BaseView
 	
 	function displayPoem()
 	{
-?>
-	
-<?php
+		echo "displayPoem()";
 	}
 }
 ?>
-
 
 <h1>Looney Limericks</h1>
 <div id="wrapper" class="landingPage">
