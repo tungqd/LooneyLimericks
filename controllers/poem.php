@@ -12,20 +12,20 @@
 class poem
 {
     
-    function __construct() 
+    function __construct()
+    {
+	    require_once('./models/model.php');    
+    }
+    
+    
+    function poemController()
     {
 	    
     }
     
-    
-    function poemController() 
+    function addAPoem($title, $author, $content)
     {
-	    
-    }
-    
-    function rate($title, $author, $content) 
-    {
-	    
+	    addPoem($title, $author, $content);
     }
 
 

@@ -2,7 +2,7 @@
 /**
 * main.php
 *
-* Main controller handles retrieveing poem and rating info, add rating
+* Main controller handles retrieveing poem and rating info, adding rating
 *
 * @author   Tung Dang, Loc Dang, Khanh Nguyen
 *
@@ -16,7 +16,7 @@ class main
 	*
 	* Default constructor
 	*/
-    function __construct() 
+    function __construct()
     {
 	    require_once('./models/model.php');
     }
@@ -24,39 +24,40 @@ class main
     *
     * Main controller handles retrieving poem info
     */
-    function mainController() 
+    function mainController()
     {
 	    $_SESSION["view"] = "LandingView";
     }
     
-    function randomPoem() 
+    function randomPoem()
     {
+	   $array = getRandomPoem();
 	    
     }
     
-    function getPoem($id) 
+    function getPoem($id)
     {
-	    
+	   $array = getAPoem($id);
     }
     
-    function topTen() 
+    function topTen()
     {
-	    
+	    $array = getTopTen();
     }
     
-    function tenMostRecent() 
+    function tenMostRecent()
     {
-	    
+	    $array = getTenMostRecent();
     }
     
-    function aveRating($id) 
+    function aveRating($id)
     {
-	    
+	   $rating = getAveRating($id); 
     }
   
-    function addRating($pID, $rating) 
+    function addRating($pID, $rating)
     {
-	    
+	    addRating($pID,$rating);
     }
 }
 ?>

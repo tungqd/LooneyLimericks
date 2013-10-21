@@ -15,7 +15,7 @@ class looneyLimericks
     /**
     * Constructor
     */
-	function __construct() 
+	function __construct()
 	{
 		require_once('./config/config.php');
 	}
@@ -85,8 +85,7 @@ class looneyLimericks
 			<link rel="stylesheet" type="text/css" href="./css/styles.css" />
 		</head>
 		<body>
-			<?php 
-		
+			<?php 	
 				require_once("./views/{$viewname}.php"); 
 			?>
 		</body>
