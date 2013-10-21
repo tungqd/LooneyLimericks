@@ -31,13 +31,12 @@ class main
     
     function randomPoem()
     {
-	   $array = getRandomPoem();
-	    
+	   return getRandomPoem();
     }
     
     function getPoem($id)
     {
-	   $array = getAPoem($id);
+	   return getAPoem($id);
     }
     
     function topTen()
