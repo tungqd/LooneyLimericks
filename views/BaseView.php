@@ -1,59 +1,58 @@
-
 <?php 
-class BaseView 
+class BaseView
 {
+	
+		   
+	
+	function displayPoem()
+	{
+		echo "displayPoem";
+	
+	}
+	
+	function displayTwoTitleColumn() 
+	{
+		echo "displayTwoTitleColumn";
+	}
+	
+	function displayLinkRating()
+	{
+		echo "displayLinkRating";
+	}
+}
 ?>
-	<h1>Looney Limericks</h1>
+
+<h1>Looney Limericks</h1>
 	<div id="wrapper" class="landingPage">
 
 		<div id="poemWrapper">
-<?php
-		function displayPoem()
-		{
-?>
-			<div id="poem">
-				<table>
-					<tr>
-						<th class="PoemTitle">Poem Title</th>
-					</tr>
-					<tr>
-						<td class="PoemContent">Poem Content</td>
-					</tr>		
-				</table>	
-			</div>
-<?php
-		}
-?>	
-<?php
-		function displayTwoTitleColumn()
-		{
-?>
+  
+	
 			<div id="topHighest">
 				<b class="highest">Top 10 highest rated poems</b><br>
+				<!-- fake link -->
+				<a>Title 1</a>
+				
 			</div>
 	
 			<div id="topRecent">
 				<b class="highest">Top 10 most recently submitted poems</b><br>
-	
+				<!-- fake link -->
+				<a>Title 1</a>
 			</div>
-<?php
-		}
-?>
-		</div>
+
+		</div> <!-- close div id="poemWrapper"-->
 
 
-<?php
-	function displayLinkRating()
-	{
-?>
 	<div id="link-rate">
+	
 		<div id="link">
 			<a>Choose Random Poem</a>
 		
 			<a>Upload a poem</a>
 		</div>
 		
-		<div id="rate">
+		<div id="rate"> 
 			<img id="1" onclick="rate(this.id)" onmouseover="highlight(this.id)" onmouseout="clear(this.id)" src="grayStar.png" />
 			<img id="2" onclick="rate(this.id)" onmouseover="highlight(this.id)" onmouseout="clear(this.id)" src="grayStar.png" />
 			<img id="3" onclick="rate(this.id)" onmouseover="highlight(this.id)" onmouseout="clear(this.id)" src="grayStar.png" />
@@ -63,7 +62,7 @@ class BaseView
 			<script>
 				function highlight(id)
 				{
-					document.getElementById(id).src="fullstar.png";
+					document.getElementById(id).src="yellowStar.png";
 					if(id==2)
 					{
 						highlight(1);
@@ -134,13 +133,15 @@ class BaseView
 				{
 					document.getElementById(id).src="grayStar.png";
 				}
-			</script>
-		</div>
-	</div>
+			</script> <!-- close Javascript function block -->
+		</div> <!-- close div id="rate" -->
+	</div> <!-- close div id="link-rate" --> 
+
+	</div> <!-- close div id="wrapper" -->
+	
+	
 <?php
-	}
-?>
-	</div>
-<?php
-}
+	$obj = new BaseView(); 
+	$obj->displayTwoTitleColumn();
+	$obj->displayLinkRating();
 ?>

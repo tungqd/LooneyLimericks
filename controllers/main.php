@@ -26,7 +26,7 @@ class main
     */
     function mainController() 
     {
-	    $_SESSION["view"] = "BaseView";
+	    $_SESSION["view"] = "LandingView";
     }
     
     function randomPoem() 
