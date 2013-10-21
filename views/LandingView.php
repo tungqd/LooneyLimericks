@@ -9,9 +9,15 @@ class LandingView extends BaseView
 	
 	function displayPoem()
 	{
-		echo "displayPoem()";
+		$result = $controller->randomPoem();
+		
 	}
 }
+
+	$obj = new LandingView(); 
+	
+	$obj->displayTwoTitleColumn();
+	$obj->displayLinkRating();
 ?>
 
 <h1>Looney Limericks</h1>
@@ -21,13 +27,7 @@ class LandingView extends BaseView
 			<div id="poem">
 				<table>
 					<tr>
-						<th class="PoemTitle">Poem Title</th>
-						<form action="index.php" method="GET">
-							<input type="hidden" name="c" value="main">
-							<input type="hidden" name="view" value="poemview">
-							<input type="hidden" name="ac" value="main">
-    						<input type="text" value="title">
-						</form>
+						<th class="PoemTitle"><?php echo $obj->displayPoem();?></th>
 					</tr>
 					<tr>
 						<td class="PoemContent">Poem Content</td>
@@ -150,9 +150,3 @@ class LandingView extends BaseView
 	
 	
 		
-<?php
-	$obj = new LandingView(); 
-	$obj->displayPoem();
-	$obj->displayTwoTitleColumn();
-	$obj->displayLinkRating();
-?>

@@ -1,5 +1,5 @@
 <?php 
-class BaseView
+abstract class BaseView
 {	
 	function __construct(){}
 	
