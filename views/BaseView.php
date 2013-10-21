@@ -1,9 +1,6 @@
 <?php 
 class BaseView
-{
-	
-		   
-	
+{	
 	function displayPoem()
 	{
 		echo "displayPoem";
