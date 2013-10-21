@@ -12,11 +12,16 @@ session_start();
 class looneyLimericks
 {
 
+    /**
+    * Constructor
+    */
 	function __construct() 
 	{
 		require_once('./config/config.php');
 	}
-	
+	/**
+	* Calls appropriate controllers
+	*/
 	function start()
 	{
 	    // there are 2 controllers
@@ -38,7 +43,9 @@ class looneyLimericks
 			//function pointer to call the controller
 			$this -> $controller();
 	}	
-
+    /**
+    * main controller
+    */
 	function main()
 	{
 		require_once("./controllers/main.php");
@@ -46,7 +53,9 @@ class looneyLimericks
 		$main -> mainController();
 		$this -> displayView($_SESSION['view']);
 	}
-
+	/**
+    * poem controller
+    */
 	function poem()
 	{
 		require_once("./controllers/poem.php");

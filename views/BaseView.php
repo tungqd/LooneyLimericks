@@ -25,7 +25,7 @@ class BaseView
 		}
 ?>	
 <?php
-		function displayTwoTitleColumn
+		function displayTwoTitleColumn()
 		{
 ?>
 			<div id="topHighest">
