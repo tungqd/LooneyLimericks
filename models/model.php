@@ -1,7 +1,7 @@
 <?php
 /**
  * This class is used to communicate with the database.
- * @author Henry Dang, Tung Dang, Khanh Nguyen
+ * @author Loc Dang, Tung Dang, Khanh Nguyen
  *
  */
 class Model {
