@@ -31,7 +31,11 @@ class main
     
     function randomPoem()
     {
-	   return getRandomPoem();
+	   $array = getRandomPoem();
+	   foreach($array as $name => $value) {
+		   $result[] = $value;
+	   }
+	   return $result;
     }
     
     function getPoem($id)
@@ -42,6 +46,7 @@ class main
     function topTen()
     {
 	    $array = getTopTen();
+	    
     }
     
     function tenMostRecent()
