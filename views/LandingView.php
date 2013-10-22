@@ -1,16 +1,20 @@
 <?php
 require_once("./views/BaseView.php");
+require_once("./controllers/main.php");
+
+
 class LandingView extends BaseView
 {
+	private $controller;
 	function __construct()
 	{
-		$controller = new main();
+		$this->controller = new main();
 	}
 	
 	function displayPoem()
 	{
-		$result = $controller->randomPoem();
-		
+		$result = $this->controller->randomPoem();
+		return $result;
 	}
 }
 
@@ -27,7 +31,12 @@ class LandingView extends BaseView
 			<div id="poem">
 				<table>
 					<tr>
-						<th class="PoemTitle"><?php echo $obj->displayPoem();?></th>
+						<th class="PoemTitle">
+							<?php 
+								 $result_array = $obj->displayPoem();
+								 echo $result_array[1];
+							?>
+						</th>
 					</tr>
 					<tr>
 						<td class="PoemContent">Poem Content</td>

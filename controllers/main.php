@@ -8,17 +8,17 @@
 *
 *
 */
-
+require_once('./models/model.php');
 class main
 {
-	
+	private $model;
 	/**
 	*
 	* Default constructor
 	*/
     function __construct()
     {
-	    require_once('./models/model.php');
+	 	$this->model = new model();   
     }
     /**
     *
@@ -31,7 +31,8 @@ class main
     
     function randomPoem()
     {
-	   $array = getRandomPoem();
+	   $array = $this->model->getRandomPoem();
+	   $result = array();
 	   foreach($array as $name => $value) {
 		   $result[] = $value;
 	   }
