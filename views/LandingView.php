@@ -31,7 +31,7 @@ class LandingView extends BaseView
 			<div id="poem">
 				<table>
 					<tr>
-						<th class="PoemTitle">
+						<th class="PoemTitle">Title:
 							<?php 
 								 $result_array = $obj->displayPoem();
 								 echo $result_array[1];
@@ -39,17 +39,20 @@ class LandingView extends BaseView
 						</th>
 					</tr>
 					<tr>
-						<td class="PoemContent">Poem Content</td>
-					</tr>		
+						<td class="PoemAuthor"><b>Author:</b><?php echo $result_array[2];?></td>
+					</tr>	
+					<tr>
+						<td class="PoemContent"><b>Content:</b><?php echo $result_array[3];?></td>
+					</tr>	
 				</table>	
 			</div>
-			
-		<div id="rate"> 
-			<img id="1" onclick="rate(this.id)" onmouseover="highlight(this.id)" onmouseout="clear(this.id)" src="grayStar.png" />
-			<img id="2" onclick="rate(this.id)" onmouseover="highlight(this.id)" onmouseout="clear(this.id)" src="grayStar.png" />
-			<img id="3" onclick="rate(this.id)" onmouseover="highlight(this.id)" onmouseout="clear(this.id)" src="grayStar.png" />
-			<img id="4" onclick="rate(this.id)" onmouseover="highlight(this.id)" onmouseout="clear(this.id)" src="grayStar.png" />
-			<img id="5" onclick="rate(this.id)" onmouseover="highlight(this.id)" onmouseout="clear(this.id)" src="grayStar.png" />
+			<br/><br/><br/><br/><br/><br/>
+		<div id="rate"> Your Rating:
+			<img id="1" onclick="rate(this.id)" onmouseover="highlight(this.id)" onmouseout="clear(this.id)" src='./views/grayStar.png' />
+			<img id="2" onclick="rate(this.id)" onmouseover="highlight(this.id)" onmouseout="clear(this.id)" src='./views/grayStar.png' />
+			<img id="3" onclick="rate(this.id)" onmouseover="highlight(this.id)" onmouseout="clear(this.id)" src='./views/grayStar.png' />
+			<img id="4" onclick="rate(this.id)" onmouseover="highlight(this.id)" onmouseout="clear(this.id)" src='./views/grayStar.png' />
+			<img id="5" onclick="rate(this.id)" onmouseover="highlight(this.id)" onmouseout="clear(this.id)" src='./views/grayStar.png' />
 			
 			<script>
 				function highlight(id)
