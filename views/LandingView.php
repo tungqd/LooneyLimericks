@@ -57,7 +57,7 @@ class LandingView extends BaseView
 			<script>
 				function highlight(id)
 				{
-					document.getElementById(id).src="yellowStar.png";
+					document.getElementById(id).src='./views/yellowStar.png';
 					if(id==2)
 					{
 						highlight(1);
@@ -126,39 +126,32 @@ class LandingView extends BaseView
 				
 				function grayOut(id)
 				{
-					document.getElementById(id).src="grayStar.png";
+					document.getElementById(id).src='./views/grayStar.png';
 				}
 			</script> <!-- close Javascript function block -->
 		</div> <!-- close div id="rate" -->
-  
-	
+		<div id="link">
+			<a>Choose Random Poem</a>
+		    <br/>
+			<a>Upload a poem</a>
+			</div>
+	</div><!-- close div id="poemWrapper" -->
+	<div class="right">
 			<div id="topHighest">
-				<b class="highest">Top 10 highest rated poems</b><br>
+				<b class="highest">Top 10</b><br>
 				<!-- fake link -->
 				<a>Title 1</a>
 				
 			</div>
 	
 			<div id="topRecent">
-				<b class="highest">Top 10 most recently submitted poems</b><br>
+				<b class="highest">Top 10 most recent</b><br>
 				<!-- fake link -->
 				<a>Title 1</a>
 			</div>
+	</div> <!-- close div class="right"-->
+</div> <!-- close div id="wrapper"-->
 
-	</div> <!-- close div id="poemWrapper"-->
-
-
-
-	
-	<div id="link">
-			<a>Choose Random Poem</a>
-		
-			<a>Upload a poem</a>
-	</div>
-		
-
-
-</div> <!-- close div id="wrapper" -->
 	
 	
 		

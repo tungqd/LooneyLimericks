@@ -17,8 +17,8 @@ body {
 
 #poemWrapper
 {
-    width: 100%;
-    float: top;
+    width: 50%;
+    float: left;
     margin: 0 auto;
 }
 
@@ -41,4 +41,9 @@ body {
 #topRecent
 {
     float:right;
+}
+.right
+{
+	width: 40%;
+	float:right;
 }
