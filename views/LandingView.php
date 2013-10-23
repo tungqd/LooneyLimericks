@@ -133,7 +133,7 @@ class LandingView extends BaseView
             <a href="index.php">Choose Random Poem</a>
             <br/>
             <a href="index.php?c=poem&view=SubmitView&ac=uploadPoem">Upload a poem</a>
-            </div>
+        </div>
     </div><!-- close div id="poemWrapper" -->  
     
     <div class="right">

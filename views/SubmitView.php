@@ -1,14 +1,13 @@
-<h1>Submit Poem - <a href=index.php><?php echo SITENAME?></a>
+<h1>Submit Poem - <a href=index.php>Looney Limericks</a></h1>
 
-</h1>
-<form id="addNewPoem" name="addPoem" method="POST" onSubmit="JavaScript:doCheck()">
+<form id="addNewPoem" name="addPoem" method="POST" action="index.php?c=poem" onSubmit="return doCheck()">
+        <input type="hidden" name="ac" value="addPoem">
         Title: <input type="text" name="title" id="title"/><br>
         Author: <input type="text" name="author" id="author"/><br>
         Content: <br>
         <textarea rows="5" cols="50" name="content" id="content"></textarea>
         <input type="submit" value="Submit"/>
 </form>
-
 
 <script type="text/javascript">
 /**
@@ -26,20 +25,20 @@
         var content = document.getElementById("content");
         var linesArray = content.split("/n"); //split string by each line and put into array
         
-        var validate;
+        
         
         /* Null input for title */
         if (titleLength == null || titleLength === "")
         {
-            validate = false;
-            break;
+            alert("Please enter Title.");
+            return false;
         }
         
         /* Title length > 30 */ 
         else if (titleLength != null && titleLength !== "" && titleLength > 30)       
         {
-            validate = false;
-            break;
+            alert("Title can only contain 30 characters max!");
+            return false;
         }
         
         else if (titleLength != null && titleLength !== "" && titleLength <= 30)
@@ -47,15 +46,15 @@
             /* Null input for author */
             if (authorLength == null || authorLength === "")
             {
-                validate = false;
-                break;
+                alert("Please enter Author name.");
+                return false;
             }
             
             /* Author length > 30 */
             else if (authorLength != null && authorLength !== "" && authorLength > 30)
             {
-                validate = false;
-                break;
+                alert("Author name can only contain 30 characters max!");
+                return false;
             }
             
             else if (authorLength != null && authorLength !== "" && authorLength <= 30)
@@ -64,8 +63,8 @@
                 var numOfLine = linesArray.length;
                 if(numOfLine != 5)
                 {
-                    validate = false;
-                    break;
+                    alert("Need 5 lines for a poem.");
+                    return false;
                 }
                 else //five lines of poem
                 {
@@ -75,25 +74,13 @@
                         var lineLength = linesArray[i].length;
                         if (lineLength < 30)
                         {
-                            validate = false;
-                            break;
+                            alert("Each line can only contain 30 characters.");
+                            return false;
                         }
                     }
                 }
             }       
         }   
-        
-        validate = true;
-        
-        /* Valid input - Send data to server */
-        if (validate)
-        {
-            return true;
-        }
-        else 
-        {
-            alert("Title and Author name can only contain 30 characters. Poem can only contain 150.");
-            return false;       
-        }
+        return true;
     }
 </script>
