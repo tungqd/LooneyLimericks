@@ -145,6 +145,10 @@ class LandingView extends BaseView
     <div class="right">
             <div id="topHighest">
                 <b class="highest">Top 10 highest rating</b><br>
+                <?php
+                    $topTenArray = $obj->displayTopTen();
+                    var_dump($topTenArray);
+                ?>
                 <a href="index.php?c=main&view=PoemView&ac=displayTopTen&e=<?php echo $result_array[0]; ?>">
                 <?php echo $result_array[1];?></a>
                 

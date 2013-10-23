@@ -27,7 +27,7 @@ class main
     function mainController()
     {
         if (isset($_GET["ac"]) && $_GET["ac"] == "displayTopTen") {
-	        //$array = $this->getPoem($_GET["i"]);
+	        $array = $this->getPoem($_GET["i"]);
 	        $_SESSION["view"] = "PoemView";
 	        
         }
@@ -61,6 +61,8 @@ class main
        $array = $this->model->getTopTen();
        $result = array();
        foreach($array as $name => $value) {
+           //truncate array, return only ID and title
+           $value = array_slice($value,0,2);
            $result[] = $value;
        }
        return $result;
