@@ -18,10 +18,7 @@ abstract class BaseView
        
     }
     
-    function displayLinkRating()
-    {
-        echo "";
-    }
+   
 }
 ?>
 

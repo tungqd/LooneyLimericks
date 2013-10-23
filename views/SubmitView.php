@@ -81,11 +81,12 @@
         /* Valid input - Send data to server */
         if (validate)
         {
-        
+            return true;
         }
         else 
         {
-            alert("Title and Author name can only contain 30 characters. Poem can only contain 150.");       
+            alert("Title and Author name can only contain 30 characters. Poem can only contain 150.");
+            return false;       
         }
     }
 </script>
