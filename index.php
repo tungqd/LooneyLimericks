@@ -60,7 +60,7 @@ class looneyLimericks
     {
         require_once("./controllers/poem.php");
         $poem = new Poem();
-        $poen -> loginController();
+        $poem -> poemController();
         $this -> displayView($_SESSION['view']);
     }
     

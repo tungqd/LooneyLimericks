@@ -11,7 +11,7 @@ abstract class BaseView
     
     abstract function displayPoem();
     
-    function displayTwoTitleColumn() 
+    function displayTopTen() 
     {
         $result = $this->controller->topTen();
         return $result;

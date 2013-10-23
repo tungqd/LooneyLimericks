@@ -20,7 +20,8 @@ class poem
     
     function poemController()
     {
-        
+        if(isset($_GET["ac"]) && $_GET["ac"] == "uploadPoem")
+        $_SESSION['view'] = "SubmitView";
     }
     
     function addAPoem($title, $author, $content)

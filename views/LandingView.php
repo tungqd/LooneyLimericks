@@ -1,11 +1,9 @@
 <?php
 require_once("./views/BaseView.php");
 
-
-
 class LandingView extends BaseView
 {
-    //private $controller;
+    
     function __construct()
     {
         parent::__construct();
@@ -20,10 +18,9 @@ class LandingView extends BaseView
 
     $obj = new LandingView(); 
     
-    $obj->displayTwoTitleColumn();
+    $obj->displayTopTen();
     $obj->displayLinkRating();
-    $result_array = $obj->displayPoem();
-?>
+    ?>
 
 <h1>Looney Limericks</h1>
 <div id="wrapper" class="landingPage">
@@ -33,7 +30,8 @@ class LandingView extends BaseView
                 <table>
                     <tr>
                         <th class="PoemTitle">Title:
-                            <?php                          
+                            <?php
+                                 $result_array = $obj->displayPoem();                   
                                  echo $result_array[1];
                             ?>
                         </th>
@@ -135,7 +133,7 @@ class LandingView extends BaseView
         <div id="link">
             <a href="index.php">Choose Random Poem</a>
             <br/>
-            <a href="index.php">Upload a poem</a>
+            <a href="index.php?c=poem&view=SubmitView&ac=uploadPoem">Upload a poem</a>
             </div>
     </div><!-- close div id="poemWrapper" -->  
     
