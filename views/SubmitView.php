@@ -9,5 +9,5 @@ class SubmitView extends BaseView
         Author: <input type="text" name="author"/><br>
         Content: <br>
         <textarea rows="4" cols="50" name="content"></textarea>
-    	<input type="submit" value="Submit">
+        <input type="submit" value="Submit">
 </form>

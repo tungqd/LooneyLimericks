@@ -1,12 +1,14 @@
-body, p, h1, h2, h3, h4, table, td, th, ul, ol, textarea, input {
-font-family: helvetica,verdana,arial,sans-serif;
+body, p, h1, h2, h3, h4, table, td, th, ul, ol, textarea, input 
+{
+    font-family: helvetica,verdana,arial,sans-serif;
 }
-body {
-  background: url(textture-noise.png);
-  overflow: hidden;
-  margin: 0;
-  font-size: 20px;
-  font-family: "Helvetica Neue", Helvetica;
+body 
+{
+    background: url(textture-noise.png);
+    overflow: hidden;
+    margin: 0;
+    font-size: 20px;
+    font-family: "Helvetica Neue", Helvetica;
 }
 
 #wrapper
@@ -17,8 +19,8 @@ body {
 
 #poemWrapper
 {
-    width: 100%;
-    float: top;
+    width: 50%;
+    float: left;
     margin: 0 auto;
 }
 
@@ -35,10 +37,15 @@ body {
 
 #topHighest
 {
-    float: center;
+    float: left;
 }
 
 #topRecent
 {
     float:right;
+}
+.right
+{
+	width: 40%;
+	float:right;
 }

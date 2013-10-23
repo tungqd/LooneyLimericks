@@ -11,14 +11,14 @@
 require_once('./models/model.php');
 class main
 {
-	private $model;
-	/**
-	*
-	* Default constructor
-	*/
+    private $model;
+    /**
+    *
+    * Default constructor
+    */
     function __construct()
     {
-	 	$this->model = new model();   
+        $this->model = new model();   
     }
     /**
     *
@@ -26,43 +26,43 @@ class main
     */
     function mainController()
     {
-	    $_SESSION["view"] = "LandingView";
+        $_SESSION["view"] = "LandingView";
     }
     
     function randomPoem()
     {
-	   $array = $this->model->getRandomPoem();
-	   $result = array();
-	   foreach($array as $name => $value) {
-		   $result[] = $value;
-	   }
-	   return $result;
+       $array = $this->model->getRandomPoem();
+       $result = array();
+       foreach($array as $name => $value) {
+           $result[] = $value;
+       }
+       return $result;
     }
     
     function getPoem($id)
     {
-	   return getAPoem($id);
+       return getAPoem($id);
     }
     
     function topTen()
     {
-	    $array = getTopTen();
-	    
+        $array = getTopTen();
+        
     }
     
     function tenMostRecent()
     {
-	    $array = getTenMostRecent();
+        $array = getTenMostRecent();
     }
     
     function aveRating($id)
     {
-	   $rating = getAveRating($id); 
+       $rating = getAveRating($id); 
     }
   
     function addRating($pID, $rating)
     {
-	    addRating($pID,$rating);
+        addRating($pID,$rating);
     }
 }
 ?>
