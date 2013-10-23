@@ -19,8 +19,7 @@ class LandingView extends BaseView
     $obj = new LandingView(); 
     
     $obj->displayTopTen();
-    $obj->displayLinkRating();
-    ?>
+?>
 
 <h1>Looney Limericks</h1>
 <div id="wrapper" class="landingPage">
