@@ -27,30 +27,55 @@
         var authorLength = author.value.length;
         
         var validate;
-        if (titleLength > 30)
+        
+        /* Null input for title */
+        if (titleLength == null || titleLength === "")
         {
             validate = false;
             break;
         }
-        else if (titleLength <= 30 && authorLength > 30)
+        
+        /* Title length > 30 */ 
+        else if (titleLength != null && titleLength !== "" && titleLength > 30)       
         {
             validate = false;
-            break
-        }   
-        else if (titleLength <= 30 && authorLength <= 30)
+            break;
+        }
+        
+        else if (titleLength != null && titleLength !== "" && titleLength <= 30)
         {
-            /* Check length of each line of poem */
-            for (var i = 1; i < 5; i++)
+            /* Null input for author */
+            if (authorLength == null || authorLength === "")
             {
-                var poemLine = document.getElementById(i);
-                var lineLength = poemLine.value.length;
-                if (lineLength < 30)
+                validate = false;
+                break;
+            }
+            
+            /* Author length > 30 */
+            else if (authorLength != null && authorLength !== "" && authorLength > 30)
+            {
+                validate = false;
+                break;
+            }
+            
+            else if (authorLength != null && authorLength !== "" && authorLength <= 30)
+            {
+                /* Check length of each line of poem */
+                var poemLine;
+                var lineLength;
+                for (var i = 1; i < 5; i++)
+                {
+                    poemLine = document.getElementById(i);
+                    lineLength = poemLine.value.length;
+                    if (lineLength < 30)
                     {
                         validate = false;
                         break;
                     }
+                }
             }
-        }
+        }   
+        
         validate = true;
         
         /* Valid input - Send data to server */
