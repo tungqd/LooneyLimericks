@@ -69,12 +69,14 @@ class main
         
     }
     
-    function tenMostRecent()
+    function topMostRecent()
     {
        
        $array = $this->model->getTenMostRecent();
        $result = array();
        foreach($array as $name => $value) {
+           //truncate array, return only ID and title
+           $value = array_slice($value,0,2);
            $result[] = $value;
        }
        return $result;

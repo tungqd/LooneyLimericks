@@ -156,8 +156,13 @@ class LandingView extends BaseView
     
             <div id="topRecent">
                 <b class="highest">Top 10 most recent</b><br>
-                <!-- fake link -->
-                <a>Title 1</a>
+                <?php
+                    $topRecentArray = $obj->displayTopRecent();
+                    foreach ($topRecentArray as $recentPoem) {
+                ?>
+                <a href="index.php?c=main&view=PoemView&ac=displayTopTen&e=<?php echo $recentPoem['ID']; ?>">
+                <?php echo $recentPoem['title'];?></a><br/>
+                <?php } ?>
             </div>
     </div> <!-- close div class="right"-->
 </div> <!-- close div id="wrapper"-->
