@@ -6,7 +6,7 @@
     $database = "hw3";
     
     $db = mysqli_connect($host, $user, $pass) or die('Could not connect: ' . mysql_error());
-
+    
     $query = "DROP DATABASE IF EXISTS $database;";
     $query .= "CREATE DATABASE $database;";
     $query .= "USE $database;";
@@ -15,7 +15,9 @@
         timeSelected DATETIME,PRIMARY KEY(ID));";
     $query .= "DROP TABLE IF EXISTS Rating;";
     $query .= "CREATE TABLE Rating (ID INT not null auto_increment, pID INT not null, rating INT not null, PRIMARY KEY(ID),
-        FOREIGN KEY(pID) REFERENCES Poem(ID) ON UPDATE CASCADE);";   
+        FOREIGN KEY(pID) REFERENCES Poem(ID) ON UPDATE CASCADE);";
+    $query .= "DROP TABLE IF EXISTS TimePicked;";
+    $query .= "CREATE TABLE TimePicked (time DATETIME not null);";   
         
     if (mysqli_multi_query($db,$query)) {
         echo "Database and Schemas for $database created successfully.";

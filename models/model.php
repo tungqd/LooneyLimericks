@@ -101,11 +101,13 @@ class Model
      */
     function addPoem($title, $author, $content) 
     {
-    		if (validate($content))
+    		if ($this->validate($content))
     		{
         		$query = "insert into Poem (title, author, content, timeSelected) values ('$title', '$author', '$content', NOW())";
         mysqli_query($this->db, $query);
+        return true;
         }
+        return false;
     }
     
     /**
