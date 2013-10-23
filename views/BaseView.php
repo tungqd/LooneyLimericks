@@ -1,13 +1,21 @@
-<?php 
+<?php
+require_once("./controllers/main.php");
 abstract class BaseView
 {   
-    function __construct(){}
+
+    protected $controller;
+    function __construct()
+    {	    
+	    $this->controller = new main();
+    }
     
     abstract function displayPoem();
     
     function displayTwoTitleColumn() 
     {
-        echo "";
+        $result = $this->controller->topTen();
+        return $result;
+       
     }
     
     function displayLinkRating()

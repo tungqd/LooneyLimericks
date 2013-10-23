@@ -46,7 +46,12 @@ class main
     
     function topTen()
     {
-        $array = getTopTen();
+       $array = $this->model->getTopTen();
+       $result = array();
+       foreach($array as $name => $value) {
+           $result[] = $value;
+       }
+       return $result;
         
     }
     
