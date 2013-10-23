@@ -7,12 +7,12 @@ abstract class BaseView
     
     function displayTwoTitleColumn() 
     {
-        echo "displayTwoTitleColumn";
+        echo "";
     }
     
     function displayLinkRating()
     {
-        echo "displayLinkRating";
+        echo "";
     }
 }
 ?>

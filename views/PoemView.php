@@ -2,8 +2,6 @@
 require_once("./views/BaseView.php");
 class PoemView extends BaseView
 {
-    
-    
     function displayPoem()
     {
         echo "displayPoem()";
@@ -110,8 +108,17 @@ class PoemView extends BaseView
             </script> <!-- close Javascript function block -->
         </div> <!-- close div id="rate" -->
   
+        
+        <div id="link">
+            <a>Choose Random Poem</a>
+        
+            <a>Upload a poem</a>
+        </div>
+
+    </div> <!-- close div id="poemWrapper"-->
     
-            <div id="topHighest">
+    <div class="right">
+         <div id="topHighest">
                 <b class="highest">Top 10 highest rated poems</b><br>
                 <!-- fake link -->
                 <a>Title 1</a>
@@ -123,16 +130,7 @@ class PoemView extends BaseView
                 <!-- fake link -->
                 <a>Title 1</a>
             </div>
-
-    </div> <!-- close div id="poemWrapper"-->
-
-    
-    <div id="link">
-            <a>Choose Random Poem</a>
-        
-            <a>Upload a poem</a>
-    </div>
-        
+    </div> <!-- close div class="right" -->
 
 </div> <!-- close div id="wrapper" -->
     

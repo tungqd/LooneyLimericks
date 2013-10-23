@@ -28,7 +28,7 @@ class LandingView extends BaseView
 <div id="wrapper" class="landingPage">
 
     <div id="poemWrapper">
-            <div id="poem">
+        <div id="poem">
                 <table>
                     <tr>
                         <th class="PoemTitle">Title:
@@ -45,7 +45,7 @@ class LandingView extends BaseView
                         <td class="PoemContent"><b>Content:</b><?php echo $result_array[3];?></td>
                     </tr>   
                 </table>    
-            </div>
+        </div> <!-- close poem div -->
             <br/><br/><br/><br/><br/><br/>
         <div id="rate"> Your Rating:
             <img id="1" onclick="rate(this.id)" onmouseover="highlight(this.id)" onmouseout="clear(this.id)" src='./views/grayStar.png' />
@@ -130,15 +130,18 @@ class LandingView extends BaseView
                 }
             </script> <!-- close Javascript function block -->
         </div> <!-- close div id="rate" -->
+        
+     
         <div id="link">
-            <a>Choose Random Poem</a>
+            <a href="index.php">Choose Random Poem</a>
             <br/>
-            <a>Upload a poem</a>
+            <a href="index.php">Upload a poem</a>
             </div>
-    </div><!-- close div id="poemWrapper" -->
+    </div><!-- close div id="poemWrapper" -->  
+    
     <div class="right">
             <div id="topHighest">
-                <b class="highest">Top 10</b><br>
+                <b class="highest">Top 10 highest rating</b><br>
                 <!-- fake link -->
                 <a>Title 1</a>
                 
