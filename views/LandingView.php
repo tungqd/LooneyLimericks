@@ -39,7 +39,13 @@ class LandingView extends BaseView
                         <td class="PoemAuthor"><b>Author:</b><?php echo $result_array[2];?></td>
                     </tr>   
                     <tr>
-                        <td class="PoemContent"><b>Content:</b><?php echo $result_array[3];?></td>
+                        <td class="PoemContent"><b>Content:</b><br/><?php 
+	                        $content_array = explode("\n",$result_array[3]);
+	                        foreach ($content_array as $line) {
+	                            echo $line."<br/>";
+	                        }
+                        ?>
+                        </td>
                     </tr>   
                 </table>    
         </div> <!-- close poem div -->
