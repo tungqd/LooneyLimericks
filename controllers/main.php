@@ -57,7 +57,13 @@ class main
     
     function tenMostRecent()
     {
-        $array = getTenMostRecent();
+       
+       $array = $this->model->getTenMostRecent();
+       $result = array();
+       foreach($array as $name => $value) {
+           $result[] = $value;
+       }
+       return $result;
     }
     
     function aveRating($id)

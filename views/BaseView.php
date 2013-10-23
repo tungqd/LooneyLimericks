@@ -17,7 +17,11 @@ abstract class BaseView
         return $result;
        
     }
-    
+    function displayTopRecent()
+    {
+	    $result = $this->controller->topMostRecent();
+	    return $result;
+    }
    
 }
 ?>
