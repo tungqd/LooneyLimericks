@@ -26,7 +26,14 @@ class main
     */
     function mainController()
     {
+        if (isset($_GET["ac"]) && $_GET["ac"] == "displayTopTen") {
+	        //$array = $this->getPoem($_GET["i"]);
+	        $_SESSION["view"] = "PoemView";
+	        
+        }
+        else {
         $_SESSION["view"] = "LandingView";
+        }
     }
     
     function randomPoem()
@@ -41,7 +48,12 @@ class main
     
     function getPoem($id)
     {
-       return getAPoem($id);
+       $array = $this->model->getAPoem($id);
+       $result = array();
+       foreach($array as $name => $value) {
+           $result[] = $value;
+       }
+       return $result;
     }
     
     function topTen()
