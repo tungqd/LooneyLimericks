@@ -4,14 +4,16 @@
  * @author Loc Dang, Tung Dang, Khanh Nguyen
  *
  */
-class Model {
+class Model 
+{
     private $db;
     
     /**
      * Constructor
      */
-    function __construct() {
-        $this->db = @mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE) or die('Could not connect to MySQL: ' . mysqli_connect_error($this->db));
+    function __construct() 
+    {
+        $this->db = @mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE) or die('Could not connect to MySQL: ' . 	mysqli_connect_error($this->db));
         mysqli_set_charset($this->db, 'uft8');
     }
     
@@ -19,7 +21,8 @@ class Model {
      * Gets a random poem from Poem table.
      * @return an associated array containing id, title, author, content, timeSelected of a poem.
      */
-    function getRandomPoem() {
+    function getRandomPoem() 
+    {
         $query = "select * from Poem order by rand() limit 1";
         $result = mysqli_query($this->db, $query);
         return mysqli_fetch_array($result, MYSQLI_ASSOC);
@@ -30,7 +33,8 @@ class Model {
      * @param id the id of the poem
      * @return an associated array containing id, title, author, content, timeSelected of a poem.
      */
-    function getAPoem($id) {
+    function getAPoem($id) 
+    {
         $query = "select * from Poem where id = $id";
         $result = mysqli_query($this->db, $query);
         return mysqli_fetch_array($result, MYSQLI_ASSOC);
@@ -40,17 +44,20 @@ class Model {
      * Get top ten poems with highest ratings
      * @return an array of associated arrays of top ten poems
      */
-    function getTopTen() {
+    function getTopTen() 
+    {
         $query = "select pID, sum(rating) as sum from Rating group by pID order by sum desc limit 10";
         $result = mysqli_query($this->db, $query);
         //Get the IDs of the top ten in descending order
         $topIDs = array(); 
-        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) 
+        {
             $topIDs[] = $row['pID'];
         }
         //Get the titles of the poems
         $poems = array();
-        foreach ($topIDs as $index => $value) {
+        foreach ($topIDs as $index => $value) 
+        {
             $poem = $this->getAPoem($value);
             $poems[] = $poem;
         }
@@ -61,11 +68,13 @@ class Model {
      * Gets ten most recent poems posted.
      * @return an array of associated arrays of poems
      */
-    function getTenMostRecent() {
+    function getTenMostRecent() 
+    {
         $query = "select * from Poem order by timeSelected desc limit 10";
         $result = mysqli_query($this->db, $query);
         $poems = array();
-        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) 
+        {
             $poems[] = $row;
         }
         return $poems;
@@ -76,7 +85,8 @@ class Model {
      * @param id the id of the poem.
      * @return the average rating.
      */
-    function getAveRating($id) {
+    function getAveRating($id) 
+    {
         $query = "select average from (select pID, avg(rating) as average from Rating group by pID) R where R.pID = $id";
         $result = mysqli_query($this->db, $query);
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
@@ -89,9 +99,13 @@ class Model {
      * @param author the author of the poem
      * @param content the content of the poem
      */
-    function addPoem($title, $author, $content) {
-        $query = "insert into Poem (title, author, content, timeSelected) values ('$title', '$author', '$content', NOW())";
+    function addPoem($title, $author, $content) 
+    {
+    		if (validate($content))
+    		{
+        		$query = "insert into Poem (title, author, content, timeSelected) values ('$title', '$author', '$content', NOW())";
         mysqli_query($this->db, $query);
+        }
     }
     
     /**
@@ -99,9 +113,25 @@ class Model {
      * @param pID poem ID
      * @param rating the user rating for this poem
      */
-    function addRating($pID, $rating) {
+    function addRating($pID, $rating) 
+    {
         $query = "insert into Rating (pID, rating) values ($pID, $rating)";
         mysqli_query($this->db, $query);
+    }
+    
+    /**
+    Validate the content of the poem with ryhme scheme AABBA
+    */
+    function validate($content)
+    {
+    		$lines = explode("\n", $content);
+    		$key1 = metaphone($lines[0]);
+    		$key2 = metaphone($lines[1]);
+    		$key3 = metaphone($lines[2]);
+    		$key4 = metaphone($lines[3]);
+    		$key5 = metaphone($lines[4]);
+    		return $key1 == $key2 && $key3 == $key4 && $key5 == $key1;
+    		
     }
 }
 

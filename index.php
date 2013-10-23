@@ -28,17 +28,21 @@ class looneyLimericks
         $controllers_available= array('main','poem');
 
         //deciding the controller to be run
-        if(isset($_GET['c']) && in_array($_GET['c'],$controllers_available)){
-            if("main"==$_GET['c']){
-                $controller = "main";
-                }
-                else {
-                    $controller = $_GET['c'];
-                }
-            }
-            else{
+        if(isset($_GET['c']) && in_array($_GET['c'],$controllers_available))
+        {
+            if("main"==$_GET['c'])
+            {
                 $controller = "main";
             }
+            else 
+            {
+                $controller = $_GET['c'];
+            }
+        }
+        else
+        {
+             $controller = "main";
+        }
 
             //function pointer to call the controller
             $this -> $controller();
