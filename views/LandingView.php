@@ -21,7 +21,7 @@ class LandingView extends BaseView
     $obj->displayTopTen();
 ?>
 
-<h1>Looney Limericks</h1>
+<h1><a href="index.php"><?php echo SITENAME; ?></a></h1>
 <div id="wrapper" class="landingPage">
 
     <div id="poemWrapper">
