@@ -1,6 +1,6 @@
 <h1>Submit Poem - <a href=index.php>Looney Limericks</a></h1>
 
-<form id="addNewPoem" name="addPoem" method="POST" action="index.php?c=poem" onSubmit="return doCheck()">
+<form onSubmit="return doCheck();" action="index.php?c=poem" id="addNewPoem" name="addPoem" method="POST">
         <input type="hidden" name="ac" value="addPoem">
         Title: <input type="text" name="title" id="title"/><br>
         Author: <input type="text" name="author" id="author"/><br>
@@ -18,46 +18,52 @@
 */
     function doCheck()
     {
-        var title=document.getElementById("title");
-        var titleLength = title.value.length;
-        var author = document.getElementById("author");
-        var authorLength = author.value.length;
-        var content = document.getElementById("content");
-        var linesArray = content.split("/n"); //split string by each line and put into array
+        var x=document.getElementById("addNewPoem");
+        var title = x.elements[1].value;
+        var titleLength = title.length;
+        var author = x.elements[2].value;
+        var authorLength = author.length;
+        var content = x.elements[3].value;
         
+        //split string by each line and put into array
+        var split = content.split('\n');
+        var linesArray = [];
+        for (var i = 0; i < split.length; i++)
+        if (split[i]) {linesArray.push(split[i]);}
+
         
         
         /* Null input for title */
-        if (titleLength == null || titleLength === "")
+        if (titleLength == 0)
         {
             alert("Please enter Title.");
             return false;
         }
         
         /* Title length > 30 */ 
-        else if (titleLength != null && titleLength !== "" && titleLength > 30)       
+        else if (titleLength > 30)       
         {
             alert("Title can only contain 30 characters max!");
             return false;
         }
         
-        else if (titleLength != null && titleLength !== "" && titleLength <= 30)
+        else if (titleLength <= 30)
         {
             /* Null input for author */
-            if (authorLength == null || authorLength === "")
+            if (authorLength == 0)
             {
                 alert("Please enter Author name.");
                 return false;
             }
             
             /* Author length > 30 */
-            else if (authorLength != null && authorLength !== "" && authorLength > 30)
+            else if (authorLength > 30)
             {
                 alert("Author name can only contain 30 characters max!");
                 return false;
             }
             
-            else if (authorLength != null && authorLength !== "" && authorLength <= 30)
+            else if (authorLength <= 30)
             {
                 /* Check number of lines */
                 var numOfLine = linesArray.length;
@@ -72,14 +78,14 @@
                     for (var i = 0; i < 5; i++)
                     {
                         var lineLength = linesArray[i].length;
-                        if (lineLength < 30)
+                        if (lineLength > 30)
                         {
                             alert("Each line can only contain 30 characters.");
                             return false;
                         }
                     }
                 }
-            }       
+            }      
         }   
         return true;
     }
