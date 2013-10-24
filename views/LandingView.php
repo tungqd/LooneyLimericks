@@ -51,11 +51,14 @@ class LandingView extends BaseView
         </div> <!-- close poem div -->
             <br/><br/><br/><br/><br/><br/>
         <div id="rate"> Your Rating:
-            <img id="1" onclick="rate(this.id)" onmouseover="highlight(this.id)" onmouseout="clear(this.id)" src='./views/grayStar.png' />
-            <img id="2" onclick="rate(this.id)" onmouseover="highlight(this.id)" onmouseout="clear(this.id)" src='./views/grayStar.png' />
-            <img id="3" onclick="rate(this.id)" onmouseover="highlight(this.id)" onmouseout="clear(this.id)" src='./views/grayStar.png' />
-            <img id="4" onclick="rate(this.id)" onmouseover="highlight(this.id)" onmouseout="clear(this.id)" src='./views/grayStar.png' />
-            <img id="5" onclick="rate(this.id)" onmouseover="highlight(this.id)" onmouseout="clear(this.id)" src='./views/grayStar.png' />
+            <img id="1" onclick="rate(this.id)" onmouseover="highlight(this.id)" onmouseout="unHighLight(this.id)" src='./views/grayStar.png'/>
+            <img id="2" onclick="rate(this.id)" onmouseover="highlight(this.id)" onmouseout="unHighLight(this.id)" src='./views/grayStar.png' />
+            <img id="3" onclick="rate(this.id)" onmouseover="highlight(this.id)" onmouseout="unHighLight(this.id)" src='./views/grayStar.png' />
+            <img id="4" onclick="rate(this.id)" onmouseover="highlight(this.id)" onmouseout="unHighLight(this.id)" src='./views/grayStar.png' />
+            <img id="5" onclick="rate(this.id)" onmouseover="highlight(this.id)" onmouseout="unHighLight(this.id)" src='./views/grayStar.png' />
+
+            <br>
+            <div id="rating"></div>
             
             <script>
                 function highlight(id)
@@ -63,7 +66,7 @@ class LandingView extends BaseView
                     document.getElementById(id).src='./views/yellowStar.png';
                     if(id==2)
                     {
-                        highlight(1);
+                        highlight(1);    
                     }
                     else if(id==3)
                     {
@@ -85,8 +88,9 @@ class LandingView extends BaseView
                     }
                 }
 
-                function clear(id)
+                function unHighLight(id)
                 {
+
                     if(document.getElementById("rating").innerHTML==1)
                     {
                         grayOut(2);
@@ -111,6 +115,7 @@ class LandingView extends BaseView
                     }
                     else if(document.getElementById("rating").innerHTML==5)
                     {
+
                     }
                     else
                     {
@@ -126,12 +131,12 @@ class LandingView extends BaseView
                 {
                     document.getElementById("rating").innerHTML=id;
                 }
-                
                 function grayOut(id)
                 {
                     document.getElementById(id).src='./views/grayStar.png';
                 }
             </script> <!-- close Javascript function block -->
+
         </div> <!-- close div id="rate" -->
         
      
