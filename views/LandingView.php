@@ -136,9 +136,7 @@ class LandingView extends BaseView
                 function rate(id)
                 {
                     document.getElementById("rating").innerHTML=id;
-            </script>
-                    <?php $_SESSION["rate"] = ?><script> return id;</script>;?>
-            <script>
+                  
                 }
             </script>                    
                 
