@@ -61,6 +61,11 @@ class LandingView extends BaseView
             <div id="rating"></div>
             
             <script>
+                function grayOut(id)
+                {
+                    document.getElementById(id).src='./views/grayStar.png';
+                }
+                /* highlight the stars before current mouse position */
                 function highlight(id)
                 {
                     document.getElementById(id).src='./views/yellowStar.png';
@@ -88,9 +93,9 @@ class LandingView extends BaseView
                     }
                 }
 
+                /* unhighlight all stars locating after mouse click position */
                 function unHighLight(id)
                 {
-
                     if(document.getElementById("rating").innerHTML==1)
                     {
                         grayOut(2);
@@ -117,7 +122,7 @@ class LandingView extends BaseView
                     {
 
                     }
-                    else
+                    else /* no mouse click */
                     {
                         grayOut(1);
                         grayOut(2);
@@ -131,10 +136,7 @@ class LandingView extends BaseView
                 {
                     document.getElementById("rating").innerHTML=id;
                 }
-                function grayOut(id)
-                {
-                    document.getElementById(id).src='./views/grayStar.png';
-                }
+                
             </script> <!-- close Javascript function block -->
 
         </div> <!-- close div id="rate" -->
