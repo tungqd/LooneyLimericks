@@ -31,7 +31,11 @@ class main
 	        $_SESSION["view"] = "PoemView";
 	        
         }
-        else {
+        else if(isset($_GET["ac"]) && $_GET["ac"] == "ratePoem"){
+            echo "rating is added";
+            $this->addRating($_GET['pid'], $_GET['stars']);
+            $_SESSION["view"] = "LandingView";
+        } else {
         $_SESSION["view"] = "LandingView";
         }
     }
@@ -89,7 +93,7 @@ class main
   
     function addRating($pID, $rating)
     {
-        addRating($pID,$rating);
+        $this->model->addRating($pID,$rating);
     }
 }
 ?>

@@ -3,3 +3,4 @@ Loc Dang, Tung Dang, Khanh Nguyen
 
 1. Loc: run php create.php in commandline using localhost php version instead of default Mac's version.
 2. Tung: Existed database causes error when running create.php. Fixed by running query "DROP TABLE IF EXISTS".
+3. Tung: unable to pass Javascript variable to $_SESSION as Javascript is client side.

@@ -51,15 +51,25 @@ class LandingView extends BaseView
         </div> <!-- close poem div -->
             <br/><br/><br/><br/><br/><br/>
         <div id="rate"> Your Rating:
-            <img id="1" onclick="rate(this.id)" onmouseover="highlight(this.id)" onmouseout="unHighLight(this.id)" src='./views/grayStar.png'/>
-            <img id="2" onclick="rate(this.id)" onmouseover="highlight(this.id)" onmouseout="unHighLight(this.id)" src='./views/grayStar.png' />
-            <img id="3" onclick="rate(this.id)" onmouseover="highlight(this.id)" onmouseout="unHighLight(this.id)" src='./views/grayStar.png' />
-            <img id="4" onclick="rate(this.id)" onmouseover="highlight(this.id)" onmouseout="unHighLight(this.id)" src='./views/grayStar.png' />
-            <img id="5" onclick="rate(this.id)" onmouseover="highlight(this.id)" onmouseout="unHighLight(this.id)" src='./views/grayStar.png' />
+            <?php for($i=1; $i<=5; $i++) {
+	        ?>
+	        <img id="<?php echo $i; ?>" onclick="rate(this.id)" onmouseover="highlight(this.id)" onmouseout="unHighLight(this.id)" src='./views/grayStar.png'/>
 
+        <?php } ?>
             <br>
+            <?php
+                ob_start();
+            ?>
             <div id="rating"></div>
-            
+            <?php
+                $_SESSION['rate'] = ob_get_contents();
+            ?>
+            <form id="rate" action="index.php" method="GET">
+                <input type="hidden" name="c" value="main" />
+                <input type="hidden" name="ac" value="ratePoem" />
+                <input type="hidden" name="pid" value=<?php echo $result_array[0];?> />
+                <input type="hidden" name="stars" value="<?php echo $_SESSION['rate'];?>" />
+            </form>
             <script>
                 function grayOut(id)
                 {
@@ -136,6 +146,7 @@ class LandingView extends BaseView
                 function rate(id)
                 {
                     document.getElementById("rating").innerHTML=id;
+                    document.forms["rate"].submit();
                   
                 }
             </script>                    
