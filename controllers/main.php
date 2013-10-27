@@ -26,8 +26,13 @@ class main
     */
     function mainController()
     {
-        if (isset($_GET["ac"]) && $_GET["ac"] == "displayTopTen") {
+        if (isset($_GET["ac"]) && $_GET["ac"] == "displayPoem") {
 	        $array = $this->getPoem($_GET["i"]);
+	        $_SESSION["view"] = "PoemView";
+	        
+        }
+        else if (isset($_GET["ac"]) && $_GET["ac"] == "chooseRandom") {
+	        $array = $this->randomPoem();
 	        $_SESSION["view"] = "PoemView";
 	        
         }

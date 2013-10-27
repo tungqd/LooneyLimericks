@@ -18,9 +18,7 @@ class LandingView extends BaseView
     }
 }
 
-    $obj = new LandingView(); 
-    
-    $obj->displayTopTen();
+    $obj = new LandingView();
 ?>
 
 <h1><a href="index.php"><?php echo SITENAME; ?></a></h1>
@@ -153,15 +151,13 @@ class LandingView extends BaseView
                     xmlhttp.send();
                   */
                 }
-            </script>                    
-                
             </script> <!-- close Javascript function block -->
 
         </div> <!-- close div id="rate" -->
         
      
         <div id="link">
-            <a href="index.php">Choose Random Poem</a>
+            <a href="index.php?c=main&view=PoemView&ac=chooseRandom">Choose Random Poem</a>
             <br/>
             <a href="index.php?c=poem&view=SubmitView&ac=uploadPoem">Upload a poem</a>
         </div>
@@ -174,7 +170,7 @@ class LandingView extends BaseView
                     $topTenArray = $obj->displayTopTen();
                     foreach ($topTenArray as $topPoem) {
                 ?>
-                <a href="index.php?c=main&view=PoemView&ac=displayTopTen&e=<?php echo $topPoem['ID']; ?>">
+                <a href="index.php?c=main&view=PoemView&ac=displayPoem&e=<?php echo $topPoem['ID']; ?>">
                 <?php echo $topPoem['title'];?></a><br/>
                 <?php } ?>
             </div>
@@ -185,7 +181,7 @@ class LandingView extends BaseView
                     $topRecentArray = $obj->displayTopRecent();
                     foreach ($topRecentArray as $recentPoem) {
                 ?>
-                <a href="index.php?c=main&view=PoemView&ac=displayTopTen&e=<?php echo $recentPoem['ID']; ?>">
+                <a href="index.php?c=main&view=PoemView&ac=displayPoem&e=<?php echo $recentPoem['ID']; ?>">
                 <?php echo $recentPoem['title'];?></a><br/>
                 <?php } ?>
             </div>
