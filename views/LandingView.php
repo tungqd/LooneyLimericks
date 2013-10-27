@@ -53,7 +53,7 @@ class LandingView extends BaseView
         <div id="rate"> Your Rating:
             <?php for($i=1; $i<=5; $i++) {
 	        ?>
-	        <img id="<?php echo $i; ?>" onclick="rate(this.id)" onmouseover="highlight(this.id)" onmouseout="unHighLight(this.id)" src='./views/grayStar.png'/>
+	        <img id="<?php echo $i; ?>" onclick="rate(this.id)" onmouseover="highlight(this.id)" onmouseout="unHighLight(this.id)" src='./css/grayStar.png'/>
 
         <?php } ?>
             <br>
@@ -62,12 +62,12 @@ class LandingView extends BaseView
             <script>
                 function grayOut(id)
                 {
-                    document.getElementById(id).src='./views/grayStar.png';
+                    document.getElementById(id).src='./css/grayStar.png';
                 }
                 /* highlight the stars before current mouse position */
                 function highlight(id)
                 {
-                    document.getElementById(id).src='./views/yellowStar.png';
+                    document.getElementById(id).src='./css/yellowStar.png';
                     if(id==2)
                     {
                         highlight(1);    
