@@ -17,7 +17,8 @@
     $query .= "CREATE TABLE Rating (ID INT not null auto_increment, pID INT not null, rating INT not null, PRIMARY KEY(ID),
         FOREIGN KEY(pID) REFERENCES Poem(ID) ON UPDATE CASCADE);";
     $query .= "DROP TABLE IF EXISTS TimePicked;";
-    $query .= "CREATE TABLE TimePicked (time DATETIME not null);";   
+    $query .= "CREATE TABLE TimePicked (time DATETIME not null);"; 
+    $query .= "INSERT INTO TimePicked values (NOW())";  
         
     if (mysqli_multi_query($db,$query)) {
         echo "Database and Schemas for $database created successfully.";

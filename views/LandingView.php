@@ -12,6 +12,8 @@ class LandingView extends BaseView
     function displayPoem()
     {
         $result = $this->controller->randomPoem();
+        if($result)
+       		 $this->controller->sendTimeStamp();
         return $result;
     }
 }

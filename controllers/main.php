@@ -95,5 +95,13 @@ class main
     {
         $this->model->addRating($pID,$rating);
     }
+    
+    /**
+    Send the time when display featured poem back to database
+    */
+    function sendTimeStamp()
+    {
+    		$this->model->setFeaturedPoemTimeStamp();
+    }
 }
 ?>

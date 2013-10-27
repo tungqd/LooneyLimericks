@@ -135,6 +135,16 @@ class Model
     		return $key1 == $key2 && $key3 == $key4 && $key5 == $key1;
     		
     }
+    /**
+    Put the time when featured poem selected into database
+    */
+    function setFeaturedPoemTimeStamp()
+    {
+    		$query = "UPDATE TimePicked SET time = NOW() LIMIT 1";
+    		$result = mysqli_query($this->db, $query);
+    }
+    
+    
 }
 
 ?>
