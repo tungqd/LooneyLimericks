@@ -59,19 +59,8 @@ class LandingView extends BaseView
 
         <?php } ?>
             <br>
-            <?php
-                ob_start();
-            ?>
+            
             <div id="rating"></div>
-            <?php
-                $_SESSION['rate'] = ob_get_contents();
-            ?>
-            <form id="rate" action="index.php" method="GET">
-                <input type="hidden" name="c" value="main" />
-                <input type="hidden" name="ac" value="ratePoem" />
-                <input type="hidden" name="pid" value=<?php echo $result_array[0];?> />
-                <input type="hidden" name="stars" value="<?php echo $_SESSION['rate'];?>" />
-            </form>
             <script>
                 function grayOut(id)
                 {
@@ -148,8 +137,21 @@ class LandingView extends BaseView
                 function rate(id)
                 {
                     document.getElementById("rating").innerHTML=id;
-                    document.forms["rate"].submit();
-                  
+                    //document.forms["rate"].submit();
+                    
+                    window.location.href = "index.php?c=main&ac=ratePoem&view=LandingView&pid="+<?php echo $result_array[0];?>+"&stars="+id;
+                    /*var xmlhttp;
+                    if (window.XMLHttpRequest)
+                      {// code for IE7+, Firefox, Chrome, Opera, Safari
+                      xmlhttp=new XMLHttpRequest();
+                      }
+                    else
+                      {// code for IE6, IE5
+                      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                      }
+                    xmlhttp.open("GET","index.php?c=main?view=LandingView?ac=ratePoem?pid=<?php echo $result_array[0];?>?stars=" +id,false);
+                    xmlhttp.send();
+                  */
                 }
             </script>                    
                 
