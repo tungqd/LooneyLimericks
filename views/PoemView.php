@@ -55,7 +55,12 @@ class PoemView extends BaseView
 
             <br/><br/><br/><br/><br/><br/>
         <div id="rate"> Your Rating:
-            <?php 
+            <?php
+            if ($_SESSION["rate"] != 0) {
+        ?>
+            <div class="selectedMsg">You have rated <?php echo $_SESSION["rate"];?> out of 5.</div>
+            <?php
+                } 
                 for($j=1; $j<=$_SESSION["rate"]; $j++) {
 	        ?>
 	        <img id="<?php echo $j; ?>" onclick="rate(<?php echo $j; ?>)" onmouseover="highlight(<?php echo $j; ?>)" onmouseout="unHighLight(<?php echo $j; ?>)" src='./css/greenStar.png'/>

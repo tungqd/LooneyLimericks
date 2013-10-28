@@ -18,7 +18,8 @@
         FOREIGN KEY(pID) REFERENCES Poem(ID) ON UPDATE CASCADE);";
     $query .= "DROP TABLE IF EXISTS TimePicked;";
     $query .= "CREATE TABLE TimePicked (poemID INT not null, time DATETIME not null, PRIMARY KEY(poemID));"; 
-    $query .= "INSERT INTO TimePicked values (0, NOW())";  
+    $query .= "INSERT INTO TimePicked values (1, NOW());";
+    $query .= "INSERT INTO Poem(title, author,content, timeSelected) VALUES ('Initial Poem', 'First Person','There was an old man from Peru\n who dreamed he was eating his shoe\n He awoke in the night\n with a terrible fright\n and found out that it was quite true.', NOW());";
         
     if (mysqli_multi_query($db,$query)) {
         echo "Database and Schemas for $database created successfully.";

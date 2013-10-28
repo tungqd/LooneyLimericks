@@ -78,7 +78,7 @@
                     for (var i = 0; i < 5; i++)
                     {
                         var lineLength = linesArray[i].length;
-                        if (lineLength > 30)
+                        if (lineLength > 50)
                         {
                             alert("Each line can only contain 30 characters.");
                             return false;

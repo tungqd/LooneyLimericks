@@ -25,7 +25,6 @@ class Model
     {
         $query = "select * from Poem order by rand() limit 1";
         $result = mysqli_query($this->db, $query);
-        var_dump($query);
         return mysqli_fetch_array($result, MYSQLI_ASSOC);
     }
     
@@ -46,8 +45,8 @@ class Model
     */
     function getFeaturedPoem()
     {
-    		$query = "select * from TimePicked limit 1";
-    		$result = mysqli_query($this->db, $query);
+    	$query = "select * from TimePicked limit 1";
+    	$result = mysqli_query($this->db, $query);
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
         return $this->getAPoem($row['poemID']);
     }
@@ -139,11 +138,16 @@ class Model
     function validate($content)
     {
     		$lines = explode("\n", $content);
-    		$key1 = metaphone($lines[0]);
-    		$key2 = metaphone($lines[1]);
-    		$key3 = metaphone($lines[2]);
-    		$key4 = metaphone($lines[3]);
-    		$key5 = metaphone($lines[4]);
+    		$words = explode(" ", $lines[0]);
+    		$key1 = metaphone($words[count($words) - 1]);
+            $words = explode(" ", $lines[1]);
+    		$key2 = metaphone($words[count($words) - 1]);
+    		$words = explode(" ", $lines[2]);
+    		$key3 = metaphone($words[count($words) - 1]);
+    		$words = explode(" ", $lines[3]);
+    		$key4 = metaphone($words[count($words) - 1]);
+    		$words = explode(" ", $lines[4]);
+    		$key5 = metaphone($words[count($words) - 1]);
     		return $key1 == $key2 && $key3 == $key4 && $key5 == $key1;
     		
     }
@@ -158,7 +162,7 @@ class Model
     		$result = mysqli_query($this->db, $query);
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
         $min = $row['minutes'];
-        return $min > 10;
+        return $min > 9;
     }
    
     /**

@@ -30,25 +30,28 @@ class main
         global $data;
         if (!isset($_SESSION["rate"]))
         {
-	        $_SESSION["rate"] = 0;   
+	        $_SESSION["rate"] = 0;
         }
         if (isset($_GET["ac"]) && $_GET["ac"] == "displayPoem")
         {
+            $this->clearSelectedStars();
 	        $data = $this->getPoem($_GET["e"]);
 	        $_SESSION["view"] = "PoemView";
         }
         else if (isset($_GET["ac"]) && $_GET["ac"] == "chooseRandom")
         {
-	        $array = $this->randomPoem();
+            $this->clearSelectedStars();
+	        $data = $this->randomPoem();
 	        $_SESSION["view"] = "PoemView";
 	        
         }
         else if(isset($_GET["ac"]) && $_GET["ac"] == "ratePoem")
         {
             $this->addRating($_GET['pid'], $_GET['stars']);
-            $_SESSION["rate"] = $_GET['stars'];       
+            $_SESSION["rate"] = $_GET['stars'];    
             $_SESSION["view"] = $_GET["view"];
         } else {
+        $this->clearSelectedStars();
         $_SESSION["view"] = "LandingView";
         }
     }
@@ -68,7 +71,7 @@ class main
     */
     function featuredPoem()
     {
-    		$array = $this->model->getFeaturedPoem();
+    	$array = $this->model->getFeaturedPoem();
        	$result = array();
        	foreach($array as $name => $value) {
            	$result[] = $value;
@@ -76,7 +79,7 @@ class main
        return $result; 
     }
 
-    * Get a poem by calling getAPoem(id) from Model
+    /* Get a poem by calling getAPoem(id) from Model
     * @param id the id of the poem
     * @return an array containing contents of id, title, author, content, timeSelected of a poem.
     */
@@ -137,6 +140,10 @@ class main
     function isDue()
     {
     		return $this->model->isTenMinuteDue();
+    }
+    function clearSelectedStars()
+    {
+	    $_SESSION["rate"] = 0;
     }
 }
 ?>
