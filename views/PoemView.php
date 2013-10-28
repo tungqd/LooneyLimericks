@@ -14,6 +14,11 @@ class PoemView extends BaseView
         global $data;
         return $data;
     }
+    function displayStars($pid)
+    {
+        $result = $this->controller->aveRating($pid);
+	    return $result;
+    }
 }
 
     $obj = new PoemView();
@@ -54,6 +59,9 @@ class PoemView extends BaseView
         </script>
 
             <br/><br/><br/><br/><br/><br/>
+            
+        <div id="ratewrapper">
+        
         <div id="rate"> Your Rating:
             <?php
             if ($_SESSION["rate"] != 0) {
@@ -72,13 +80,42 @@ class PoemView extends BaseView
         <?php } ?>
             <br/>         
             <div id="rating"></div>
-                    </div> <!-- close div id="rate" -->
+        </div> <!-- close div id="rate" -->
         
+        <br/><br/><br/><br/><br/><br/>
+        <div id="userRate"> User Rating:
+        <?php
+            $stars = $obj->displayStars($result_array[0]);
+            var_dump ($stars);
+            $wholestars = intval($stars); 
+            for($i=1;$i<=$wholestars;$i++) { 
+        ?>    
+        <img id="<?php echo $i;?>" src='./css/greenStar.png'/>
+        <?php 
+            }
+            if (($stars - $wholestars) >0) {
+            ?>
+            <!-- display half star -->
+           
+            <img id="halfstar" src='./css/yellowStar.png' width="30" height="30"/>
+           
+        <?php    
+            }
+            for($j=ceil($stars);$j<5;$j++) { 
+        ?>    
+        <img id="<?php echo $j;?>" src='./css/grayStar.png'/>
+        <?php 
+            }  
+        ?>
+        </div> <!-- close div id="rate" -->   
+        </div> <!-- close div id="ratewrapper" -->
             <div id="link">
             <a href="index.php?c=main&view=PoemView&ac=chooseRandom">Choose Random Poem</a>
             <br/>
             <a href="index.php?c=poem&view=SubmitView&ac=uploadPoem">Upload a poem</a>
         </div>
+         
+         
     </div><!-- close div id="poemWrapper" -->  
     
     <div class="right">

@@ -63,3 +63,13 @@ body
 {
     visibility: hidden;
 }
+#halfstarwrapper
+{
+    position:relative;
+    height: 1px;
+    width: 1px;
+}
+#halfstar
+{
+	position:relative;
+}

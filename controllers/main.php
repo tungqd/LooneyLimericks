@@ -121,7 +121,7 @@ class main
     
     function aveRating($id)
     {
-       $rating = getAveRating($id); 
+       return $this->model->getAveRating($id); 
     }
   
     function addRating($pID, $rating)

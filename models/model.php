@@ -101,7 +101,7 @@ class Model
         $query = "select average from (select pID, round(avg(rating) * 2) / 2 as average from Rating group by pID) R where R.pID = $id";
         $result = mysqli_query($this->db, $query);
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-        return $row['average'];
+        return (double) $row['average'];
     }
     
     /**
