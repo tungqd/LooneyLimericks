@@ -7,3 +7,9 @@ You need to run this file using php version in XAMPP to avoid conflicts with oth
 	Option B: In your browser, type in the following URL
 		localhost/[path to HomeworkFolder]/config/create.php
 2. When submit a poem, please make sure you enter new line for every line of your poem in "Content".
+3. When submit a poem, please keep in mind that metaphone() and soundex() do not work perfectly to verify rhyme schema. If your test poem doesn't pass, please use this one:
+C A
+C A
+C B
+C B
+C A
