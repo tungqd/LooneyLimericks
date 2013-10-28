@@ -72,22 +72,9 @@ function unHighLight(id)
 /* Display corresponding rate after mouse click and pass rate to controller */
 function rate(id)
 {
-    document.getElementById("rating").innerHTML=id;
-    //document.forms["rate"].submit();
-    
+    document.getElementById("rating").innerHTML=id;    
     window.location.href = "index.php?c=main&ac=ratePoem&view=LandingView&pid="+ pid +"&stars="+id;
-    /*var xmlhttp;
-    if (window.XMLHttpRequest)
-      {// code for IE7+, Firefox, Chrome, Opera, Safari
-      xmlhttp=new XMLHttpRequest();
-      }
-    else
-      {// code for IE6, IE5
-      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-      }
-    xmlhttp.open("GET","index.php?c=main?view=LandingView?ac=ratePoem?pid=<?php echo $result_array[0];?>?stars=" +id,false);
-    xmlhttp.send();
-  */
+
 }
 
 
