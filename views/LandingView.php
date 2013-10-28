@@ -1,6 +1,7 @@
-<!-- Pass poemID to javascript variable -->
+<!-- Pass poemID, $_SESSION["rate"] to javascript variable -->
 <script type="text/javascript">
 var pid = '<?php echo $result_array[0]; ?>';
+var selectedStars ='<?php echo $_SESSION["rate"]; ?>';
 </script>
 <script src="./views/stars.js"></script>
 <?php
@@ -55,7 +56,13 @@ class LandingView extends BaseView
         </div> <!-- close poem div -->
             <br/><br/><br/><br/><br/><br/>
         <div id="rate"> Your Rating:
-            <?php for($i=1; $i<=5; $i++) {
+            <?php 
+                for($j=1; $j<=$_SESSION["rate"]; $j++) {
+	        ?>
+	        <img id="<?php echo $j; ?>" onclick="rate(<?php echo $j; ?>)" onmouseover="highlight(<?php echo $j; ?>)" onmouseout="unHighLight(<?php echo $j; ?>)" src='./css/yellowStar.png'/>
+	        <?php 
+	            } 
+		        for($i=$_SESSION["rate"]+1; $i<=5; $i++) {
 	        ?>
 	        <img id="<?php echo $i; ?>" onclick="rate(<?php echo $i; ?>)" onmouseover="highlight(<?php echo $i; ?>)" onmouseout="unHighLight(<?php echo $i; ?>)" src='./css/grayStar.png'/>
         <?php } ?>
@@ -63,8 +70,7 @@ class LandingView extends BaseView
             <div id="rating"></div>
                     </div> <!-- close div id="rate" -->
         
-     
-        <div id="link">
+            <div id="link">
             <a href="index.php?c=main&view=PoemView&ac=chooseRandom">Choose Random Poem</a>
             <br/>
             <a href="index.php?c=poem&view=SubmitView&ac=uploadPoem">Upload a poem</a>
