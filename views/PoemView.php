@@ -1,8 +1,3 @@
-<!-- Pass poemID, $_SESSION["rate"] to javascript variable -->
-<script type="text/javascript">
-var pid = '<?php echo $result_array[0]; ?>';
-var selectedStars ='<?php echo $_SESSION["rate"]; ?>';
-</script>
 <script src="./views/stars.js"></script>
 <?php
 require_once("./views/BaseView.php");
@@ -52,6 +47,12 @@ class PoemView extends BaseView
                     </tr>   
                 </table>    
         </div> <!-- close poem div -->
+        
+        <!-- Pass poemID to javascript variable -->
+        <script type="text/javascript">
+            var pid = "<?php echo $result_array[0]; ?>";
+        </script>
+
             <br/><br/><br/><br/><br/><br/>
         <div id="rate"> Your Rating:
             <?php 
