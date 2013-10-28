@@ -9,6 +9,7 @@ require_once("./views/BaseView.php");
 
 class PoemView extends BaseView
 {
+
     
     function __construct()
     {
@@ -20,7 +21,8 @@ class PoemView extends BaseView
     */
     function displayPoem()
     {
-        $result = $this->controller->getPoem($_SESSION["pid"]);
+        global $data;
+        $result = $this->controller->getPoem($data);
         return $result;
     }
 }

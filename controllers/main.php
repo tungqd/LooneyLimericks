@@ -37,14 +37,15 @@ class main
         if (isset($_GET["ac"]) && $_GET["ac"] == "displayPoem")
         {
             $this->clearSelectedStars();
-            $_SESSION["pid"] = $_GET["e"];
+            $data = $_GET["e"];
             $_SESSION["view"] = "PoemView";
         }
         
         else if (isset($_GET["ac"]) && $_GET["ac"] == "chooseRandom")
         {
             $this->clearSelectedStars();
-            $data = $this->randomPoem();
+            $array = $this->randomPoem();
+            $data = $array[0];
             $_SESSION["view"] = "PoemView";
         }
 
