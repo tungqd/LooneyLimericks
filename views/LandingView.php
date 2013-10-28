@@ -54,9 +54,14 @@ class LandingView extends BaseView
         <script type="text/javascript">
             var pid = "<?php echo $result_array[0]; ?>";
         </script>
-            <br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/>
         <div id="rate"> Your Rating:
-            <?php 
+        <?php
+            if ($_SESSION["rate"] != 0) {
+        ?>
+            <div class="selectedMsg">You have rated <?php echo $_SESSION["rate"];?> out of 5.</div>
+            <?php
+                }
                 for($j=1; $j<=$_SESSION["rate"]; $j++) {
 	        ?>
 	        <img id="<?php echo $j; ?>" onclick="rate(<?php echo $j; ?>)" onmouseover="highlight(<?php echo $j; ?>)" onmouseout="unHighLight(<?php echo $j; ?>)" src='./css/greenStar.png'/>
@@ -68,7 +73,7 @@ class LandingView extends BaseView
         <?php } ?>
             <br/>         
             <div id="rating"></div>
-                    </div> <!-- close div id="rate" -->
+        </div> <!-- close div id="rate" -->
         
             <div id="link">
             <a href="index.php?c=main&view=PoemView&ac=chooseRandom">Choose Random Poem</a>
