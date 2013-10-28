@@ -112,6 +112,7 @@ class Model
     {
         if ($this->validate($content)){
             $query = "insert into Poem (title, author, content, timeSelected) values ('$title', '$author', '$content', NOW())";
+            mysqli_real_escape_string($this->db, $query);
             mysqli_query($this->db, $query);
             return true;
         }
@@ -126,6 +127,7 @@ class Model
     function addRating($pID, $rating) 
     {
         $query = "insert into Rating (pID, rating) values ($pID, $rating)";
+        mysqli_real_escape_string($this->db, $query);
         mysqli_query($this->db, $query);
     }
     
