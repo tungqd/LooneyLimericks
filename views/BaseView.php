@@ -22,6 +22,11 @@ abstract class BaseView
 	    $result = $this->controller->topMostRecent();
 	    return $result;
     }
+    function displayStars($pid)
+    {
+        $result = $this->controller->aveRating($pid);
+	    return $result;
+    }
    
 }
 ?>

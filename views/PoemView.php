@@ -11,20 +11,16 @@ class PoemView extends BaseView
     
     function displayPoem()
     {
-        global $data;
-        return $data;
+        $result = $this->controller->getPoem($_SESSION["pid"]);
+        return $result;
     }
-    function displayStars($pid)
-    {
-        $result = $this->controller->aveRating($pid);
-	    return $result;
-    }
+    
 }
 
     $obj = new PoemView();
 ?>
 
-<h1><a href="index.php"><?php echo SITENAME; ?></a></h1>
+<h1>Poem View - <a href="index.php"><?php echo SITENAME; ?></a></h1>
 <div id="wrapper" class="poemPage">
 
     <div id="poemWrapper">
@@ -56,19 +52,20 @@ class PoemView extends BaseView
         <!-- Pass poemID to javascript variable -->
         <script type="text/javascript">
             var pid = "<?php echo $result_array[0]; ?>";
+            var view = "PoemView";
         </script>
 
             <br/><br/><br/><br/><br/><br/>
             
         <div id="ratewrapper">
-        
-        <div id="rate"> Your Rating:
-            <?php
+        <div id="rate">
+        <?php
             if ($_SESSION["rate"] != 0) {
         ?>
-            <div class="selectedMsg">You have rated <?php echo $_SESSION["rate"];?> out of 5.</div>
-            <?php
-                } 
+        <div class="selectedMsg">You have rated <?php echo $_SESSION["rate"];?> out of 5.</div>
+        <?php } ?>
+        Your Rating:
+            <?php 
                 for($j=1; $j<=$_SESSION["rate"]; $j++) {
 	        ?>
 	        <img id="<?php echo $j; ?>" onclick="rate(<?php echo $j; ?>)" onmouseover="highlight(<?php echo $j; ?>)" onmouseout="unHighLight(<?php echo $j; ?>)" src='./css/greenStar.png'/>
@@ -81,12 +78,9 @@ class PoemView extends BaseView
             <br/>         
             <div id="rating"></div>
         </div> <!-- close div id="rate" -->
-        
-        <br/><br/><br/><br/><br/><br/>
         <div id="userRate"> User Rating:
         <?php
             $stars = $obj->displayStars($result_array[0]);
-            var_dump ($stars);
             $wholestars = intval($stars); 
             for($i=1;$i<=$wholestars;$i++) { 
         ?>    

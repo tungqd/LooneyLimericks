@@ -9,7 +9,6 @@
 *
 */
 require_once('./models/model.php');
-$data;
 class main
 {
     private $model;
@@ -35,7 +34,7 @@ class main
         if (isset($_GET["ac"]) && $_GET["ac"] == "displayPoem")
         {
             $this->clearSelectedStars();
-	        $data = $this->getPoem($_GET["e"]);
+	        $_SESSION["pid"] = $_GET["e"];
 	        $_SESSION["view"] = "PoemView";
         }
         else if (isset($_GET["ac"]) && $_GET["ac"] == "chooseRandom")

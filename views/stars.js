@@ -73,7 +73,7 @@ function unHighLight(id)
 function rate(id)
 {
     document.getElementById("rating").innerHTML=id;    
-    window.location.href = "index.php?c=main&ac=ratePoem&view=LandingView&pid="+ pid +"&stars="+id;
+    window.location.href = "index.php?c=main&ac=ratePoem&view="+ view +"&pid="+ pid +"&stars="+id;
 }
 
 

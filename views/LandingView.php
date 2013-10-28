@@ -60,15 +60,18 @@ class LandingView extends BaseView
         <!-- Pass poemID to javascript variable -->
         <script type="text/javascript">
             var pid = "<?php echo $result_array[0]; ?>";
+            var view = "LandingView";
         </script>
-        <br/><br/><br/><br/><br/><br/>
-        <div id="rate"> Your Rating:
+        <div id="ratewrapper">
+        
+        <div id="rate"> 
         <?php
             if ($_SESSION["rate"] != 0) {
         ?>
             <div class="selectedMsg">You have rated <?php echo $_SESSION["rate"];?> out of 5.</div>
+        <?php } ?>
+        Your Rating:
             <?php
-                }
                 for($j=1; $j<=$_SESSION["rate"]; $j++) {
 	        ?>
 	        <img id="<?php echo $j; ?>" onclick="rate(<?php echo $j; ?>)" onmouseover="highlight(<?php echo $j; ?>)" onmouseout="unHighLight(<?php echo $j; ?>)" src='./css/greenStar.png'/>
@@ -81,7 +84,31 @@ class LandingView extends BaseView
             <br/>         
             <div id="rating"></div>
         </div> <!-- close div id="rate" -->
-        
+        <div id="userRate"> User Rating:
+        <?php
+            $stars = $obj->displayStars($result_array[0]);
+            $wholestars = intval($stars); 
+            for($i=1;$i<=$wholestars;$i++) { 
+        ?>    
+        <img id="<?php echo $i;?>" src='./css/greenStar.png'/>
+        <?php 
+            }
+            if (($stars - $wholestars) >0) {
+            ?>
+            <!-- display half star -->
+           
+            <img id="halfstar" src='./css/halfgreenStar.png' width="30" height="30"/>
+           
+        <?php    
+            }
+            for($j=ceil($stars);$j<5;$j++) { 
+        ?>    
+        <img id="<?php echo $j;?>" src='./css/grayStar.png'/>
+        <?php 
+            }  
+        ?>
+        </div> <!-- close div id="rate" -->   
+        </div><!-- close div id="ratewrapper" -->   
             <div id="link">
             <a href="index.php?c=main&view=PoemView&ac=chooseRandom">Choose Random Poem</a>
             <br/>
