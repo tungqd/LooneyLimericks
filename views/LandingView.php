@@ -1,6 +1,6 @@
+<script src="./views/stars.js"></script>
 <?php
 require_once("./views/BaseView.php");
-
 class LandingView extends BaseView
 {
     
@@ -56,114 +56,33 @@ class LandingView extends BaseView
                     </tr>   
                 </table>    
         </div> <!-- close poem div -->
-            <br/><br/><br/><br/><br/><br/>
+        
+        <!-- Pass poemID to javascript variable -->
+        <script type="text/javascript">
+            var pid = "<?php echo $result_array[0]; ?>";
+        </script>
+        <br/><br/><br/><br/><br/><br/>
         <div id="rate"> Your Rating:
-            <?php for($i=1; $i<=5; $i++) {
+        <?php
+            if ($_SESSION["rate"] != 0) {
+        ?>
+            <div class="selectedMsg">You have rated <?php echo $_SESSION["rate"];?> out of 5.</div>
+            <?php
+                }
+                for($j=1; $j<=$_SESSION["rate"]; $j++) {
 	        ?>
-	        <img id="<?php echo $i; ?>" onclick="rate(this.id)" onmouseover="highlight(this.id)" onmouseout="unHighLight(this.id)" src='./css/grayStar.png'/>
-
+	        <img id="<?php echo $j; ?>" onclick="rate(<?php echo $j; ?>)" onmouseover="highlight(<?php echo $j; ?>)" onmouseout="unHighLight(<?php echo $j; ?>)" src='./css/greenStar.png'/>
+	        <?php 
+	            } 
+		        for($i=$_SESSION["rate"]+1; $i<=5; $i++) {
+	        ?>
+	        <img id="<?php echo $i; ?>" onclick="rate(<?php echo $i; ?>)" onmouseover="highlight(<?php echo $i; ?>)" onmouseout="unHighLight(<?php echo $i; ?>)" src='./css/grayStar.png'/>
         <?php } ?>
-            <br>
-            
+            <br/>         
             <div id="rating"></div>
-            <script>
-                function grayOut(id)
-                {
-                    document.getElementById(id).src='./css/grayStar.png';
-                }
-                /* highlight the stars before current mouse position */
-                function highlight(id)
-                {
-                    document.getElementById(id).src='./css/yellowStar.png';
-                    if(id==2)
-                    {
-                        highlight(1);    
-                    }
-                    else if(id==3)
-                    {
-                        highlight(1);
-                        highlight(2);
-                    }
-                    else if(id==4)
-                    {
-                        highlight(1);
-                        highlight(2);
-                        highlight(3);
-                    }
-                    else if(id==5)
-                    {
-                        highlight(1);
-                        highlight(2);
-                        highlight(3);
-                        highlight(4);
-                    }
-                }
-
-                /* unhighlight all stars locating after mouse click position */
-                function unHighLight(id)
-                {
-                    if(document.getElementById("rating").innerHTML==1)
-                    {
-                        grayOut(2);
-                        grayOut(3);
-                        grayOut(4);
-                        grayOut(5);
-                    }
-                    else if(document.getElementById("rating").innerHTML==2)
-                    {
-                        grayOut(3);
-                        grayOut(4);
-                        grayOut(5);
-                    }
-                    else if(document.getElementById("rating").innerHTML==3)
-                    {
-                        grayOut(4);
-                        grayOut(5);
-                    }
-                    else if(document.getElementById("rating").innerHTML==4)
-                    {
-                        grayOut(5);
-                    }
-                    else if(document.getElementById("rating").innerHTML==5)
-                    {
-
-                    }
-                    else /* no mouse click */
-                    {
-                        grayOut(1);
-                        grayOut(2);
-                        grayOut(3);
-                        grayOut(4);
-                        grayOut(5);
-                    }
-                }
-
-                /* Display corresponding rate after mouse click and pass rate to controller */
-                function rate(id)
-                {
-                    document.getElementById("rating").innerHTML=id;
-                    //document.forms["rate"].submit();
-                    
-                    window.location.href = "index.php?c=main&ac=ratePoem&view=LandingView&pid="+<?php echo $result_array[0];?>+"&stars="+id;
-                    /*var xmlhttp;
-                    if (window.XMLHttpRequest)
-                      {// code for IE7+, Firefox, Chrome, Opera, Safari
-                      xmlhttp=new XMLHttpRequest();
-                      }
-                    else
-                      {// code for IE6, IE5
-                      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-                      }
-                    xmlhttp.open("GET","index.php?c=main?view=LandingView?ac=ratePoem?pid=<?php echo $result_array[0];?>?stars=" +id,false);
-                    xmlhttp.send();
-                  */
-                }
-            </script> <!-- close Javascript function block -->
-
         </div> <!-- close div id="rate" -->
         
-     
-        <div id="link">
+            <div id="link">
             <a href="index.php?c=main&view=PoemView&ac=chooseRandom">Choose Random Poem</a>
             <br/>
             <a href="index.php?c=poem&view=SubmitView&ac=uploadPoem">Upload a poem</a>
