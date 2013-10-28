@@ -97,7 +97,7 @@ class PoemView extends BaseView
             ?>
             <!-- display half star -->
            
-            <img id="halfstar" src='./css/yellowStar.png' width="30" height="30"/>
+            <img id="halfstar" src='./css/halfgreenStar.png' width="30" height="30"/>
            
         <?php    
             }
