@@ -52,6 +52,7 @@ class main
         else if(isset($_GET["ac"]) && $_GET["ac"] == "ratePoem")
         {
             $this->addRating($_GET['pid'], $_GET['stars']);
+            $data = $_GET['pid'];
             $_SESSION["rate"] = $_GET['stars'];    
             $_SESSION["view"] = $_GET["view"];
         } 

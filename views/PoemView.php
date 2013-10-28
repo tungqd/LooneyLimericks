@@ -10,7 +10,7 @@ require_once("./views/BaseView.php");
 class PoemView extends BaseView
 {
 
-    
+    static $data;
     function __construct()
     {
         parent::__construct();
