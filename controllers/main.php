@@ -27,7 +27,8 @@ class main
     function mainController()
     {
         if (isset($_GET["ac"]) && $_GET["ac"] == "displayPoem") {
-	        $array = $this->getPoem($_GET["i"]);
+            global $data;
+	        $data = $this->getPoem($_GET["e"]);
 	        $_SESSION["view"] = "PoemView";
 	        
         }
