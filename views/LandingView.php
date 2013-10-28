@@ -23,15 +23,15 @@ class LandingView extends BaseView
     function displayPoem()
     {
         //Check if 10 minutes is up
-    	if ($this->controller->isDue()) {
-    		$result = $this->controller->randomPoem();
-        	if($result)
-       		$this->controller->sendTimeStamp($result[0]);
-    	}
-    	//Redisplay the current featured poem
-    	else {
-    		$result = $this->controller->featuredPoem();
-    	}
+        if ($this->controller->isDue()) {
+            $result = $this->controller->randomPoem();
+            if ($result)
+                $this->controller->sendTimeStamp($result[0]);
+        }
+        //Redisplay the current featured poem
+        else {
+            $result = $this->controller->featuredPoem();
+        }
         return $result;
     }
 }
@@ -47,7 +47,7 @@ class LandingView extends BaseView
                     <tr>
                         <th class="PoemTitle">Title:
                             <?php
-                                 $result_array = $obj->displayPoem();                   
+                                 $result_array = $obj->displayPoem();
                                  echo $result_array[1];
                             ?>
                         </th>
@@ -57,10 +57,10 @@ class LandingView extends BaseView
                     </tr>   
                     <tr>
                         <td class="PoemContent"><b>Content:</b><br/><?php 
-	                        $content_array = explode("\n",$result_array[3]);
-	                        foreach ($content_array as $line) {
-	                            echo $line."<br/>";
-	                        }
+                            $content_array = explode("\n",$result_array[3]);
+                            foreach ($content_array as $line) {
+                                echo $line."<br/>";
+                            }
                         ?>
                         </td>
                     </tr>   
@@ -86,27 +86,26 @@ class LandingView extends BaseView
                 Your Rating:
             <?php
                 for($j=1; $j<=$_SESSION["rate"]; $j++) {
-	        ?>
+            ?>
 	                <img id="<?php echo $j; ?>" onclick="rate(<?php echo $j; ?>)" onmouseover="highlight(<?php echo $j; ?>)" onmouseout="unHighLight(<?php echo $j; ?>)" src='./css/greenStar.png'/>
-	        <?php 
-	            } 
-		        for($i=$_SESSION["rate"]+1; $i<=5; $i++) {
-	        ?>
-	                <img id="<?php echo $i; ?>" onclick="rate(<?php echo $i; ?>)" onmouseover="highlight(<?php echo $i; ?>)" onmouseout="unHighLight(<?php echo $i; ?>)" src='./css/grayStar.png'/>
             <?php 
                 } 
+                for($i=$_SESSION["rate"]+1; $i<=5; $i++) {
             ?>
-                <br/>   
-                  
+	                <img id="<?php echo $i; ?>" onclick="rate(<?php echo $i; ?>)" onmouseover="highlight(<?php echo $i; ?>)" onmouseout="unHighLight(<?php echo $i; ?>)" src='./css/grayStar.png'/>
+            <?php 
+                }
+            ?>
+                <br/>
                 <div id="rating"></div>
             </div> <!-- close div id="rate" -->
-            
+
             <div id="userRate"> User Rating:
             <?php
                 $stars = $obj->displayStars($result_array[0]);
                 $wholestars = intval($stars); 
                 for($i=1;$i<=$wholestars;$i++) { 
-            ?>    
+            ?>
                     <img id="<?php echo $i;?>" src='./css/greenStar.png'/>
             <?php 
                 }
@@ -114,23 +113,23 @@ class LandingView extends BaseView
             ?>
                     <!-- display half star -->
                     <img id="halfstar" src='./css/halfgreenStar.png' width="30" height="30"/>
-           <?php    
+           <?php
                 }
                 for($j=ceil($stars);$j<5;$j++) { 
-            ?>    
+            ?>  
                     <img id="<?php echo $j;?>" src='./css/grayStar.png'/>
             <?php 
-                }  
+                }
             ?>
-            </div> <!-- close div id="userRate" -->   
-        </div><!-- close div id="ratewrapper" -->   
-        
+            </div> <!-- close div id="userRate" -->
+        </div><!-- close div id="ratewrapper" -->
+
         <div id="link">
             <a href="index.php?c=main&view=PoemView&ac=chooseRandom">Choose Random Poem</a>
             <br/>
             <a href="index.php?c=poem&view=SubmitView&ac=uploadPoem">Upload a poem</a>
         </div>
-    </div><!-- close div id="poemWrapper" -->  
+    </div><!-- close div id="poemWrapper" -->
     
     <div class="right">
         <div id="topHighest">
@@ -142,10 +141,10 @@ class LandingView extends BaseView
                     <a href="index.php?c=main&view=PoemView&ac=displayPoem&e=<?php echo $topPoem['ID']; ?>">
             <?php echo $topPoem['title'];?></a><br/>
             <?php 
-                } 
+                }
             ?>
         </div> <!-- close div id="topHighest" -->
-    
+
         <div id="topRecent">
             <b class="highest">Top 10 most recent</b><br>
             <?php
@@ -154,13 +153,9 @@ class LandingView extends BaseView
             ?>
                     <a href="index.php?c=main&view=PoemView&ac=displayPoem&e=<?php echo $recentPoem['ID']; ?>">
             <?php echo $recentPoem['title'];?></a><br/>
-            <?php 
-                } 
+            <?php
+                }
             ?>
         </div> <!-- close div id="topRecent" -->
     </div> <!-- close div class="right"-->
 </div> <!-- close div id="wrapper"-->
-
-    
-    
-        

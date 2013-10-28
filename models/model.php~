@@ -169,5 +169,6 @@ class Model
         $query = "UPDATE TimePicked SET poemID = $id, time = NOW() LIMIT 1";
         $result = mysqli_query($this->db, $query);
     }
+    
 }
 ?>

@@ -11,8 +11,8 @@ abstract class BaseView
 
     protected $controller;
     function __construct()
-    {	    
-	    $this->controller = new main();
+    {    
+        $this->controller = new main();
     }
     
     abstract function displayPoem();
@@ -31,8 +31,8 @@ abstract class BaseView
     */
     function displayTopRecent()
     {
-	    $result = $this->controller->topMostRecent();
-	    return $result;
+        $result = $this->controller->topMostRecent();
+        return $result;
     }
     
     /**
@@ -42,7 +42,7 @@ abstract class BaseView
     function displayStars($pid)
     {
         $result = $this->controller->aveRating($pid);
-	    return $result;
+        return $result;
     }
    
 }

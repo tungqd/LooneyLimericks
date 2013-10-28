@@ -172,7 +172,7 @@ class main
     */
     function clearSelectedStars()
     {
-        $_SESSION["rate"] = 0;
+	    $_SESSION["rate"] = 0;
     }
 }
 ?>

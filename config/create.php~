@@ -4,9 +4,9 @@
     $user = "root";
     $pass = "";
     $database = "hw3";
-
+    
     $db = mysqli_connect($host, $user, $pass) or die('Could not connect: ' . mysql_error());
-
+    
     $query = "DROP DATABASE IF EXISTS $database;";
     $query .= "CREATE DATABASE $database;";
     $query .= "USE $database;";
