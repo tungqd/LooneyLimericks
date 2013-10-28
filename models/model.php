@@ -25,6 +25,7 @@ class Model
     {
         $query = "select * from Poem order by rand() limit 1";
         $result = mysqli_query($this->db, $query);
+        var_dump($query);
         return mysqli_fetch_array($result, MYSQLI_ASSOC);
     }
     
@@ -41,12 +42,23 @@ class Model
     }
     
     /**
+    Get the current featured poem
+    */
+    function getFeaturedPoem()
+    {
+    		$query = "select * from TimePicked limit 1";
+    		$result = mysqli_query($this->db, $query);
+        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        return $this->getAPoem($row['poemID']);
+    }
+    
+    /**
      * Get top ten poems with highest ratings
      * @return an array of associated arrays of top ten poems
      */
     function getTopTen() 
     {
-        $query = "select pID, sum(rating) as sum from Rating group by pID order by sum desc limit 10";
+        $query = "select pID, avg(rating) as average from Rating group by pID order by average desc limit 10";
         $result = mysqli_query($this->db, $query);
         //Get the IDs of the top ten in descending order
         $topIDs = array(); 
@@ -87,7 +99,7 @@ class Model
      */
     function getAveRating($id) 
     {
-        $query = "select average from (select pID, avg(rating) as average from Rating group by pID) R where R.pID = $id";
+        $query = "select average from (select pID, round(avg(rating) * 2) / 2 as average from Rating group by pID) R where R.pID = $id";
         $result = mysqli_query($this->db, $query);
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
         return $row['average'];
@@ -135,12 +147,26 @@ class Model
     		return $key1 == $key2 && $key3 == $key4 && $key5 == $key1;
     		
     }
+    
+    /**
+    Check if 10 minutes has elapsed since the last time a featured poem selected.
+    @return true if 10 mins elapesed.
+    */
+    function isTenMinuteDue()
+    {
+    		$query = "SELECT TIMESTAMPDIFF(MINUTE,time, NOW()) as minutes from TimePicked limit 1";;
+    		$result = mysqli_query($this->db, $query);
+        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        $min = $row['minutes'];
+        return $min > 10;
+    }
+   
     /**
     Put the time when featured poem selected into database
     */
-    function setFeaturedPoemTimeStamp()
+    function setFeaturedPoemTimeStamp($id)
     {
-    		$query = "UPDATE TimePicked SET time = NOW() LIMIT 1";
+    		$query = "UPDATE TimePicked SET poemID = $id, time = NOW() LIMIT 1";
     		$result = mysqli_query($this->db, $query);
     }
     

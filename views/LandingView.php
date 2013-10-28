@@ -11,9 +11,16 @@ class LandingView extends BaseView
     
     function displayPoem()
     {
-        $result = $this->controller->randomPoem();
-        if($result)
-       		 $this->controller->sendTimeStamp();
+    		if ($this->controller->isDue()) //Check if 10 minutes is up
+    		{
+    			$result = $this->controller->randomPoem();
+        		if($result)
+       			$this->controller->sendTimeStamp($result[0]);
+    		}
+    		else //Redisplay the current featured poem
+    		{
+    			$result = $this->controller->featuredPoem();
+    		}
         return $result;
     }
 }

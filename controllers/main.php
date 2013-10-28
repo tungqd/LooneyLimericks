@@ -56,6 +56,19 @@ class main
        return $result;
     }
     
+    /**
+    Get the current featured poem to redisplay it
+    */
+    function featuredPoem()
+    {
+    		$array = $this->model->getFeaturedPoem();
+       	$result = array();
+       	foreach($array as $name => $value) {
+           	$result[] = $value;
+       	}
+       return $result; 
+    }
+    
     function getPoem($id)
     {
        $array = $this->model->getAPoem($id);
@@ -103,11 +116,16 @@ class main
     }
     
     /**
-    Send the time when display featured poem back to database
+    Send the time when a new featured poem selected back to database
     */
-    function sendTimeStamp()
+    function sendTimeStamp($id)
     {
-    		$this->model->setFeaturedPoemTimeStamp();
+    		$this->model->setFeaturedPoemTimeStamp($id);
+    }
+    
+    function isDue()
+    {
+    		return $this->model->isTenMinuteDue();
     }
 }
 ?>
