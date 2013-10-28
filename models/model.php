@@ -59,16 +59,15 @@ class Model
     {
         $query = "select pID, avg(rating) as average from Rating group by pID order by average desc limit 10";
         $result = mysqli_query($this->db, $query);
+        
         //Get the IDs of the top ten in descending order
         $topIDs = array(); 
-        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) 
-        {
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $topIDs[] = $row['pID'];
         }
         //Get the titles of the poems
         $poems = array();
-        foreach ($topIDs as $index => $value) 
-        {
+        foreach ($topIDs as $index => $value){
             $poem = $this->getAPoem($value);
             $poems[] = $poem;
         }
@@ -84,8 +83,7 @@ class Model
         $query = "select * from Poem order by timeSelected desc limit 10";
         $result = mysqli_query($this->db, $query);
         $poems = array();
-        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) 
-        {
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
             $poems[] = $row;
         }
         return $poems;
@@ -112,11 +110,10 @@ class Model
      */
     function addPoem($title, $author, $content) 
     {
-    		if ($this->validate($content))
-    		{
-        		$query = "insert into Poem (title, author, content, timeSelected) values ('$title', '$author', '$content', NOW())";
-        mysqli_query($this->db, $query);
-        return true;
+    	if ($this->validate($content)){
+        	$query = "insert into Poem (title, author, content, timeSelected) values ('$title', '$author', '$content', NOW())";
+            mysqli_query($this->db, $query);
+            return true;
         }
         return false;
     }
@@ -137,18 +134,18 @@ class Model
     */
     function validate($content)
     {
-    		$lines = explode("\n", $content);
-    		$words = explode(" ", $lines[0]);
-    		$key1 = metaphone($words[count($words) - 1]);
-            $words = explode(" ", $lines[1]);
-    		$key2 = metaphone($words[count($words) - 1]);
-    		$words = explode(" ", $lines[2]);
-    		$key3 = metaphone($words[count($words) - 1]);
-    		$words = explode(" ", $lines[3]);
-    		$key4 = metaphone($words[count($words) - 1]);
-    		$words = explode(" ", $lines[4]);
-    		$key5 = metaphone($words[count($words) - 1]);
-    		return $key1 == $key2 && $key3 == $key4 && $key5 == $key1;
+    	$lines = explode("\n", $content);
+    	$words = explode(" ", $lines[0]);
+    	$key1 = metaphone($words[count($words) - 1]);
+        $words = explode(" ", $lines[1]);
+    	$key2 = metaphone($words[count($words) - 1]);
+    	$words = explode(" ", $lines[2]);
+    	$key3 = metaphone($words[count($words) - 1]);
+    	$words = explode(" ", $lines[3]);
+    	$key4 = metaphone($words[count($words) - 1]);
+    	$words = explode(" ", $lines[4]);
+    	$key5 = metaphone($words[count($words) - 1]);
+    	return $key1 == $key2 && $key3 == $key4 && $key5 == $key1;
     		
     }
     
@@ -158,8 +155,8 @@ class Model
     */
     function isTenMinuteDue()
     {
-    		$query = "SELECT TIMESTAMPDIFF(MINUTE,time, NOW()) as minutes from TimePicked limit 1";;
-    		$result = mysqli_query($this->db, $query);
+    	$query = "SELECT TIMESTAMPDIFF(MINUTE,time, NOW()) as minutes from TimePicked limit 1";;
+    	$result = mysqli_query($this->db, $query);
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
         $min = $row['minutes'];
         return $min > 9;
@@ -170,11 +167,9 @@ class Model
     */
     function setFeaturedPoemTimeStamp($id)
     {
-    		$query = "UPDATE TimePicked SET poemID = $id, time = NOW() LIMIT 1";
-    		$result = mysqli_query($this->db, $query);
+    	$query = "UPDATE TimePicked SET poemID = $id, time = NOW() LIMIT 1";
+    	$result = mysqli_query($this->db, $query);
     }
     
-    
 }
-
 ?>

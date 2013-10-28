@@ -1,27 +1,33 @@
+/**
+* Javascript functions for Star Rating System
+*/
+
+/* Make stars gray */ 
 function grayOut(id)
 {
     document.getElementById(id).src='./css/grayStar.png';
 }
+
 /* highlight the stars before current mouse position */
 function highlight(id)
 {
     document.getElementById(id).src='./css/yellowStar.png';
-    if(id==2)
+    if(id==2) //highlight the fist star
     {
         highlight(1);    
     }
-    else if(id==3)
+    else if(id==3) //highlight the first 2 stars
     {
         highlight(1);
         highlight(2);
     }
-    else if(id==4)
+    else if(id==4) //highlight the first 3 stars
     {
         highlight(1);
         highlight(2);
         highlight(3);
     }
-    else if(id==5)
+    else if(id==5) //highlight the first 4 stars
     {
         highlight(1);
         highlight(2);

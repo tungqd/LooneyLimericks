@@ -1,6 +1,13 @@
+<!-- Use stars.js for rating system -->
 <script src="./views/stars.js"></script>
 <?php
+/**
+* View class for landing page, which inherits from BaseView.php class
+* @author Loc Dang, Tung Dang, Khanh Nguyen
+*
+*/
 require_once("./views/BaseView.php");
+
 class LandingView extends BaseView
 {
     
@@ -9,22 +16,25 @@ class LandingView extends BaseView
         parent::__construct();
     }
     
+    /**
+    * Display featured poem. 
+    * If the time interval is greater than 10 minutes, display another poem.
+    */
     function displayPoem()
     {
-    		if ($this->controller->isDue()) //Check if 10 minutes is up
-    		{
-    			$result = $this->controller->randomPoem();
-        		if($result)
-       			$this->controller->sendTimeStamp($result[0]);
-    		}
-    		else //Redisplay the current featured poem
-    		{
-    			$result = $this->controller->featuredPoem();
-    		}
+        //Check if 10 minutes is up
+    	if ($this->controller->isDue()) {
+    		$result = $this->controller->randomPoem();
+        	if($result)
+       		$this->controller->sendTimeStamp($result[0]);
+    	}
+    	//Redisplay the current featured poem
+    	else {
+    		$result = $this->controller->featuredPoem();
+    	}
         return $result;
     }
 }
-
     $obj = new LandingView();
 ?>
 
@@ -62,54 +72,60 @@ class LandingView extends BaseView
             var pid = "<?php echo $result_array[0]; ?>";
             var view = "LandingView";
         </script>
+        
         <div id="ratewrapper">
         
-        <div id="rate"> 
-        <?php
-            if ($_SESSION["rate"] != 0) {
-        ?>
-            <div class="selectedMsg">You have rated <?php echo $_SESSION["rate"];?> out of 5.</div>
-        <?php } ?>
-        Your Rating:
+            <div id="rate"> 
+            <?php
+                if ($_SESSION["rate"] != 0) {
+            ?>
+                <div class="selectedMsg">You have rated <?php echo $_SESSION["rate"];?> out of 5.</div>
+            <?php 
+                } 
+            ?>
+                Your Rating:
             <?php
                 for($j=1; $j<=$_SESSION["rate"]; $j++) {
 	        ?>
-	        <img id="<?php echo $j; ?>" onclick="rate(<?php echo $j; ?>)" onmouseover="highlight(<?php echo $j; ?>)" onmouseout="unHighLight(<?php echo $j; ?>)" src='./css/greenStar.png'/>
+	                <img id="<?php echo $j; ?>" onclick="rate(<?php echo $j; ?>)" onmouseover="highlight(<?php echo $j; ?>)" onmouseout="unHighLight(<?php echo $j; ?>)" src='./css/greenStar.png'/>
 	        <?php 
 	            } 
 		        for($i=$_SESSION["rate"]+1; $i<=5; $i++) {
 	        ?>
-	        <img id="<?php echo $i; ?>" onclick="rate(<?php echo $i; ?>)" onmouseover="highlight(<?php echo $i; ?>)" onmouseout="unHighLight(<?php echo $i; ?>)" src='./css/grayStar.png'/>
-        <?php } ?>
-            <br/>         
-            <div id="rating"></div>
-        </div> <!-- close div id="rate" -->
-        <div id="userRate"> User Rating:
-        <?php
-            $stars = $obj->displayStars($result_array[0]);
-            $wholestars = intval($stars); 
-            for($i=1;$i<=$wholestars;$i++) { 
-        ?>    
-        <img id="<?php echo $i;?>" src='./css/greenStar.png'/>
-        <?php 
-            }
-            if (($stars - $wholestars) >0) {
+	                <img id="<?php echo $i; ?>" onclick="rate(<?php echo $i; ?>)" onmouseover="highlight(<?php echo $i; ?>)" onmouseout="unHighLight(<?php echo $i; ?>)" src='./css/grayStar.png'/>
+            <?php 
+                } 
             ?>
-            <!-- display half star -->
-           
-            <img id="halfstar" src='./css/halfgreenStar.png' width="30" height="30"/>
-           
-        <?php    
-            }
-            for($j=ceil($stars);$j<5;$j++) { 
-        ?>    
-        <img id="<?php echo $j;?>" src='./css/grayStar.png'/>
-        <?php 
-            }  
-        ?>
-        </div> <!-- close div id="rate" -->   
+                <br/>   
+                  
+                <div id="rating"></div>
+            </div> <!-- close div id="rate" -->
+            
+            <div id="userRate"> User Rating:
+            <?php
+                $stars = $obj->displayStars($result_array[0]);
+                $wholestars = intval($stars); 
+                for($i=1;$i<=$wholestars;$i++) { 
+            ?>    
+                    <img id="<?php echo $i;?>" src='./css/greenStar.png'/>
+            <?php 
+                }
+                if (($stars - $wholestars) >0) {
+            ?>
+                    <!-- display half star -->
+                    <img id="halfstar" src='./css/halfgreenStar.png' width="30" height="30"/>
+           <?php    
+                }
+                for($j=ceil($stars);$j<5;$j++) { 
+            ?>    
+                    <img id="<?php echo $j;?>" src='./css/grayStar.png'/>
+            <?php 
+                }  
+            ?>
+            </div> <!-- close div id="userRate" -->   
         </div><!-- close div id="ratewrapper" -->   
-            <div id="link">
+        
+        <div id="link">
             <a href="index.php?c=main&view=PoemView&ac=chooseRandom">Choose Random Poem</a>
             <br/>
             <a href="index.php?c=poem&view=SubmitView&ac=uploadPoem">Upload a poem</a>
@@ -117,27 +133,31 @@ class LandingView extends BaseView
     </div><!-- close div id="poemWrapper" -->  
     
     <div class="right">
-            <div id="topHighest">
-                <b class="highest">Top 10 highest rating</b><br>
-                <?php
-                    $topTenArray = $obj->displayTopTen();
-                    foreach ($topTenArray as $topPoem) {
-                ?>
-                <a href="index.php?c=main&view=PoemView&ac=displayPoem&e=<?php echo $topPoem['ID']; ?>">
-                <?php echo $topPoem['title'];?></a><br/>
-                <?php } ?>
-            </div>
+        <div id="topHighest">
+            <b class="highest">Top 10 highest rating</b><br>
+            <?php
+                $topTenArray = $obj->displayTopTen();
+                foreach ($topTenArray as $topPoem) {
+            ?>
+                    <a href="index.php?c=main&view=PoemView&ac=displayPoem&e=<?php echo $topPoem['ID']; ?>">
+            <?php echo $topPoem['title'];?></a><br/>
+            <?php 
+                } 
+            ?>
+        </div> <!-- close div id="topHighest" -->
     
-            <div id="topRecent">
-                <b class="highest">Top 10 most recent</b><br>
-                <?php
-                    $topRecentArray = $obj->displayTopRecent();
-                    foreach ($topRecentArray as $recentPoem) {
-                ?>
-                <a href="index.php?c=main&view=PoemView&ac=displayPoem&e=<?php echo $recentPoem['ID']; ?>">
-                <?php echo $recentPoem['title'];?></a><br/>
-                <?php } ?>
-            </div>
+        <div id="topRecent">
+            <b class="highest">Top 10 most recent</b><br>
+            <?php
+                $topRecentArray = $obj->displayTopRecent();
+                foreach ($topRecentArray as $recentPoem) {
+            ?>
+                    <a href="index.php?c=main&view=PoemView&ac=displayPoem&e=<?php echo $recentPoem['ID']; ?>">
+            <?php echo $recentPoem['title'];?></a><br/>
+            <?php 
+                } 
+            ?>
+        </div> <!-- close div id="topRecent" -->
     </div> <!-- close div class="right"-->
 </div> <!-- close div id="wrapper"-->
 

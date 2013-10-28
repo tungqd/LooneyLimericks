@@ -1,3 +1,4 @@
+<!-- Submit Poem Page: Check validation before adding poem to database -->
 <h1>Submit Poem - <a href=index.php>Looney Limericks</a></h1>
 
 <form onSubmit="return doCheck();" action="index.php?c=poem" id="addNewPoem" name="addPoem" method="POST">
@@ -11,7 +12,7 @@
 
 <script type="text/javascript">
 /**
-* Javascript function to validate input when submitting new poem
+* Javascript function doCheck() validate input when submitting new poem
 * Max lengths for title and author are 30 characters.
 * Max length for each line of poem is 30 characters.
 * A poem needs exactly 5 lines.

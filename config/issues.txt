@@ -7,3 +7,4 @@ Loc Dang, Tung Dang, Khanh Nguyen
 4. Khanh: Rating star system displays half star for user rating.
 5. Loc: Select a random poem every 10 minutes using timestamp in a table in database
 6. Khanh: Javascript validation for user input in Submit Poem page.
+7. Loc: Validate rhyme scheme
