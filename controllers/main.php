@@ -9,6 +9,7 @@
 *
 */
 require_once('./models/model.php');
+$data;
 class main
 {
     private $model;
@@ -26,10 +27,10 @@ class main
     */
     function mainController()
     {
+        global $data;
         if (isset($_GET["ac"]) && $_GET["ac"] == "displayPoem") {
-	        $array = $this->getPoem($_GET["i"]);
+	        $data = $this->getPoem($_GET["e"]);
 	        $_SESSION["view"] = "PoemView";
-	        
         }
         else if (isset($_GET["ac"]) && $_GET["ac"] == "chooseRandom") {
 	        $array = $this->randomPoem();
@@ -56,6 +57,11 @@ class main
        return $result;
     }
     
+     /**
+     * Get a poem by calling getAPoem(id) from Model
+     * @param id the id of the poem
+     * @return an array containing contents of id, title, author, content, timeSelected of a poem.
+     */
     function getPoem($id)
     {
        $array = $this->model->getAPoem($id);
