@@ -1,4 +1,4 @@
-<script src="./views/stars.js"></script>
+<script type="text/javascript" src="./views/stars.js"></script>
 <?php
 /**
 * View class for Poem display page, which inherits from BaseView.php class
