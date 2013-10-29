@@ -1,8 +1,8 @@
 <!-- Submit Poem Page: Check validation before adding poem to database -->
-<h1>Submit Poem - <a href="index.php">Looney Limericks</a></h1>
+<h1>Submit Poem - <a href=index.php>Looney Limericks</a></h1>
 
-<form onsubmit="return doCheck();" action="index.php?c=poem" id="addNewPoem" name="addPoem" method="post">
-        <input type="hidden" name="ac" value="addPoem"/>
+<form onSubmit="return doCheck();" action="index.php?c=poem" id="addNewPoem" name="addPoem" method="POST">
+        <input type="hidden" name="ac" value="addPoem">
         Title: <input type="text" name="title" id="title"/><br/>
         Author: <input type="text" name="author" id="author"/><br/>
         Content: <br/>
@@ -30,10 +30,10 @@
         var split = content.split('\n');
         var linesArray = [];
         for (var i = 0; i < split.length; i++)
-            if (split[i]) {
-                linesArray.push(split[i]);
-            }
+        if (split[i]) {linesArray.push(split[i]);}
 
+        
+        
         /* Null input for title */
         if (titleLength == 0)
         {
