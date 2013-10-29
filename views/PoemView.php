@@ -100,7 +100,7 @@ class PoemView extends BaseView
                 $wholestars = intval($stars); 
                 for($i=1;$i<=$wholestars;$i++) { 
             ?>    
-                    <img id="<?php echo $i;?>" src='./css/greenStar.png' alt="star"/>
+                    <img id="s.<?php echo $i;?>" src='./css/greenStar.png' alt="star"/>
             <?php 
                 }
                 if (($stars - $wholestars) >0) {
@@ -109,9 +109,9 @@ class PoemView extends BaseView
                     <img id="halfstar" src='./css/halfgreenStar.png' width="30" height="30" alt="star"/>
             <?php    
                 }
-                for($j=ceil($stars);$j<5;$j++) {
+                for($j=ceil($stars)+1;$j<=5;$j++) {
             ?>    
-                    <img id="<?php echo $j;?>" src='./css/grayStar.png' alt="star"/>
+                    <img id="s.<?php echo $j;?>" src='./css/grayStar.png' alt="star"/>
             <?php 
                 }
             ?>

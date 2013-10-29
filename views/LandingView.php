@@ -106,18 +106,18 @@ class LandingView extends BaseView
                 $wholestars = intval($stars); 
                 for($i=1;$i<=$wholestars;$i++) { 
             ?>
-                    <img id="<?php echo $i;?>" src="./css/greenStar.png" alt="rate star"/>
+                    <img id="s.<?php echo $i;?>" src="./css/greenStar.png" alt="rate star"/>
             <?php 
                 }
                 if (($stars - $wholestars) >0) {
             ?>
                     <!-- display half star -->
-                    <img id="halfstar" src="./css/halfgreenStar.png" width="30" height="30"/>
+                    <img id="halfstar" src="./css/halfgreenStar.png" width="30" height="30" alt="halfstar"/>
            <?php
                 }
-                for($j=ceil($stars);$j<5;$j++) { 
+                for($j=ceil($stars)+1;$j<=5;$j++) { 
             ?>  
-                    <img id="<?php echo $j;?>" src="./css/grayStar.png" alt="rate star"/>
+                    <img id="s.<?php echo $j;?>" src="./css/grayStar.png" alt="rate star"/>
             <?php 
                 }
             ?>
