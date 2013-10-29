@@ -77,7 +77,7 @@ class looneyLimericks
         <html>
             <head>
                 <title>Looney Limericks</title>
-                <meta name="Authors" content="Tung Dang, Loc Dang, Khanh Nguyen" />
+                <meta name="author" content="Tung Dang, Loc Dang, Khanh Nguyen" />
                 <meta name="description" content="A showcase site for especially entertaining limericks" />
                 <meta name="keywords" content="HW3, poem, looney, limericks" />
                 <meta charset="utf-8" />
