@@ -87,12 +87,12 @@ class LandingView extends BaseView
             <?php
                 for($j=1; $j<=$_SESSION["rate"]; $j++) {
             ?>
-	                <img id="<?php echo $j; ?>" onclick="rate(<?php echo $j; ?>)" onmouseover="highlight(<?php echo $j; ?>)" onmouseout="unHighLight(<?php echo $j; ?>)" src='./css/greenStar.png' alt="star"/>
+	                <img id="<?php print $i; ?>" onclick="rate(<?php echo $j; ?>)" onmouseover="highlight(<?php echo $j; ?>)" onmouseout="unHighLight(<?php echo $j; ?>)" src='./css/greenStar.png' alt="star"/>
             <?php 
                 } 
                 for($i=$_SESSION["rate"]+1; $i<=5; $i++) {
             ?>
-	                <img id="<?php echo $i; ?>" onclick="rate(<?php echo $i; ?>)" onmouseover="highlight(<?php echo $i; ?>)" onmouseout="unHighLight(<?php echo $i; ?>)" src='./css/grayStar.png'alt="star"/>
+	                <img id="<?php print $i; ?>" onclick="rate(<?php echo $i; ?>)" onmouseover="highlight(<?php echo $i; ?>)" onmouseout="unHighLight(<?php echo $i; ?>)" src='./css/grayStar.png'alt="star"/>
             <?php 
                 }
             ?>
@@ -106,7 +106,7 @@ class LandingView extends BaseView
                 $wholestars = intval($stars); 
                 for($i=1;$i<=$wholestars;$i++) { 
             ?>
-                    <img id="<?php echo $i;?>" src='./css/greenStar.png' alt="rate star"/>
+                    <img id="<?php print $i;?>" src='./css/greenStar.png' alt="rate star"/>
             <?php 
                 }
                 if (($stars - $wholestars) >0) {
@@ -117,7 +117,7 @@ class LandingView extends BaseView
                 }
                 for($j=ceil($stars);$j<5;$j++) { 
             ?>  
-                    <img id="<?php echo $j;?>" src='./css/grayStar.png' alt="rate star"/>
+                    <img id="<?php print $j;?>" src='./css/grayStar.png' alt="rate star"/>
             <?php 
                 }
             ?>
