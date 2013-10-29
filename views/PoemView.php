@@ -119,9 +119,9 @@ class PoemView extends BaseView
         </div> <!-- close div id="ratewrapper" -->
         
         <div id="link">
-            <a href="index.php?c=main&view=PoemView&ac=chooseRandom">Choose Random Poem</a>
+            <a href="index.php?c=main&amp;view=PoemView&amp;ac=chooseRandom">Choose Random Poem</a>
             <br/>
-            <a href="index.php?c=poem&view=SubmitView&ac=uploadPoem">Upload a poem</a>
+            <a href="index.php?c=poem&amp;view=SubmitView&amp;ac=uploadPoem">Upload a poem</a>
         </div> <!-- close div id="link" -->
          
     </div><!-- close div id="poemWrapper" -->
@@ -133,7 +133,7 @@ class PoemView extends BaseView
                 $topTenArray = $obj->displayTopTen();
                 foreach ($topTenArray as $topPoem) {
             ?>
-                    <a href="index.php?c=main&view=PoemView&ac=displayPoem&e=<?php echo $topPoem['ID']; ?>">
+                    <a href="index.php?c=main&amp;view=PoemView&amp;ac=displayPoem&amp;e=<?php echo $topPoem['ID']; ?>">
                     <?php echo $topPoem['title'];?></a><br/>
             <?php 
                 } 
@@ -146,7 +146,7 @@ class PoemView extends BaseView
                 $topRecentArray = $obj->displayTopRecent();
                 foreach ($topRecentArray as $recentPoem) {
             ?>
-                    <a href="index.php?c=main&view=PoemView&ac=displayPoem&e=<?php echo $recentPoem['ID']; ?>">
+                    <a href="index.php?c=main&amp;view=PoemView&amp;ac=displayPoem&amp;e=<?php echo $recentPoem['ID']; ?>">
                     <?php echo $recentPoem['title'];?></a><br/>
             <?php 
                 } 
