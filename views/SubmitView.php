@@ -3,9 +3,9 @@
 
 <form onSubmit="return doCheck();" action="index.php?c=poem" id="addNewPoem" name="addPoem" method="POST">
         <input type="hidden" name="ac" value="addPoem">
-        Title: <input type="text" name="title" id="title"/><br>
-        Author: <input type="text" name="author" id="author"/><br>
-        Content: <br>
+        Title: <input type="text" name="title" id="title"/><br/>
+        Author: <input type="text" name="author" id="author"/><br/>
+        Content: <br/>
         <textarea rows="5" cols="50" name="content" id="content"></textarea>
         <input type="submit" value="Submit"/>
 </form>

@@ -128,7 +128,7 @@ class PoemView extends BaseView
     
     <div class="right">
         <div id="topHighest">
-            <b class="highest">Top 10 highest rating</b><br>
+            <b class="highest">Top 10 highest rating</b><br/>
             <?php
                 $topTenArray = $obj->displayTopTen();
                 foreach ($topTenArray as $topPoem) {
@@ -141,7 +141,7 @@ class PoemView extends BaseView
         </div> <!-- close div id="topHighest" -->
 
         <div id="topRecent">
-            <b class="highest">Top 10 most recent</b><br>
+            <b class="highest">Top 10 most recent</b><br/>
             <?php
                 $topRecentArray = $obj->displayTopRecent();
                 foreach ($topRecentArray as $recentPoem) {
